@@ -1,0 +1,178 @@
+<testsuites id="" name="" tests="70" failures="0" skipped="0" errors="0" time="43.951472">
+<testsuite name="alerts.spec.js" timestamp="2025-11-02T14:34:16.925Z" hostname="chrome" tests="3" failures="0" skipped="0" time="42.639" errors="0">
+<testcase name="DemoQA Alerts Tests › All alert buttons functionality" classname="alerts.spec.js" time="13.796">
+</testcase>
+<testcase name="DemoQA Alerts Tests › All alerts in sequence" classname="alerts.spec.js" time="24.037">
+</testcase>
+<testcase name="DemoQA Alerts Tests › Negative scenario - Handle multiple rapid alerts" classname="alerts.spec.js" time="4.806">
+</testcase>
+</testsuite>
+<testsuite name="automation-practice-form.spec.js" timestamp="2025-11-02T14:34:16.925Z" hostname="chrome" tests="9" failures="0" skipped="0" time="54.773" errors="0">
+<testcase name="DemoQA Automation Practice Form Tests › Fill form with valid data and verify submission" classname="automation-practice-form.spec.js" time="9.755">
+<system-out>
+<![CDATA[File upload error: ENOENT: no such file or directory, stat 'data/test-image.jpg'
+]]>
+</system-out>
+<system-err>
+<![CDATA[[@faker-js/faker]: faker.phone.number(format) is deprecated since v8.1 and will be removed in v9.0. Please use faker.phone.number(), faker.string.numeric() or faker.helpers.fromRegExp() instead.
+]]>
+</system-err>
+</testcase>
+<testcase name="DemoQA Automation Practice Form Tests › Form validation with invalid data" classname="automation-practice-form.spec.js" time="6.465">
+</testcase>
+<testcase name="DemoQA Automation Practice Form Tests › Mandatory field validation" classname="automation-practice-form.spec.js" time="3.804">
+</testcase>
+<testcase name="DemoQA Automation Practice Form Tests › Form with minimal required data" classname="automation-practice-form.spec.js" time="5.665">
+</testcase>
+<testcase name="DemoQA Automation Practice Form Tests › Form with special characters and edge cases" classname="automation-practice-form.spec.js" time="5.606">
+</testcase>
+<testcase name="DemoQA Automation Practice Form Tests › Parameterized test: Male user with full data" classname="automation-practice-form.spec.js" time="5.4">
+</testcase>
+<testcase name="DemoQA Automation Practice Form Tests › Parameterized test: Female user with full data" classname="automation-practice-form.spec.js" time="6.204">
+</testcase>
+<testcase name="DemoQA Automation Practice Form Tests › Parameterized test: Other gender with special characters" classname="automation-practice-form.spec.js" time="6.266">
+</testcase>
+<testcase name="DemoQA Automation Practice Form Tests › Parameterized test: User with minimal required fields" classname="automation-practice-form.spec.js" time="5.608">
+</testcase>
+</testsuite>
+<testsuite name="select-menu.spec.js" timestamp="2025-11-02T14:34:16.925Z" hostname="chrome" tests="7" failures="0" skipped="0" time="42.225" errors="0">
+<testcase name="DemoQA Select Menu Tests › All select menu functionality as specified" classname="select-menu.spec.js" time="6.265">
+</testcase>
+<testcase name="DemoQA Select Menu Tests › All select menus in sequence" classname="select-menu.spec.js" time="9.406">
+</testcase>
+<testcase name="DemoQA Select Menu Tests › Select menu validation" classname="select-menu.spec.js" time="4.623">
+</testcase>
+<testcase name="DemoQA Select Menu Tests › Select menu with different options" classname="select-menu.spec.js" time="5.429">
+</testcase>
+<testcase name="DemoQA Select Menu Tests › Select menu edge cases" classname="select-menu.spec.js" time="4.609">
+</testcase>
+<testcase name="DemoQA Select Menu Tests › Negative scenario - Invalid selections" classname="select-menu.spec.js" time="8.938">
+</testcase>
+<testcase name="DemoQA Select Menu Tests › All 5 select elements are present" classname="select-menu.spec.js" time="2.955">
+</testcase>
+</testsuite>
+<testsuite name="text-box.spec.js" timestamp="2025-11-02T14:34:16.925Z" hostname="chrome" tests="10" failures="0" skipped="0" time="37.382" errors="0">
+<testcase name="DemoQA Text Box Tests › Fill text box with random data and verify output" classname="text-box.spec.js" time="4.417">
+</testcase>
+<testcase name="DemoQA Text Box Tests › Text box with empty fields" classname="text-box.spec.js" time="7.436">
+</testcase>
+<testcase name="DemoQA Text Box Tests › Text box with invalid email format" classname="text-box.spec.js" time="3.711">
+</testcase>
+<testcase name="DemoQA Text Box Tests › Text box with special characters and long text" classname="text-box.spec.js" time="3.535">
+</testcase>
+<testcase name="DemoQA Text Box Tests › Text box with maximum length data" classname="text-box.spec.js" time="3.26">
+</testcase>
+<testcase name="DemoQA Text Box Tests › Text box with only required fields" classname="text-box.spec.js" time="2.498">
+</testcase>
+<testcase name="DemoQA Text Box Tests › Parameterized test: Standard user data" classname="text-box.spec.js" time="3.189">
+</testcase>
+<testcase name="DemoQA Text Box Tests › Parameterized test: User with special characters" classname="text-box.spec.js" time="2.878">
+</testcase>
+<testcase name="DemoQA Text Box Tests › Parameterized test: User with numbers in name" classname="text-box.spec.js" time="2.879">
+</testcase>
+<testcase name="DemoQA Text Box Tests › Parameterized test: User with minimal address" classname="text-box.spec.js" time="3.579">
+</testcase>
+</testsuite>
+<testsuite name="tool-tips.spec.js" timestamp="2025-11-02T14:34:16.925Z" hostname="chrome" tests="6" failures="0" skipped="0" time="31.314" errors="0">
+<testcase name="DemoQA Tool Tips Tests › All tooltips functionality" classname="tool-tips.spec.js" time="5.773">
+</testcase>
+<testcase name="DemoQA Tool Tips Tests › All tooltips in sequence" classname="tool-tips.spec.js" time="5.968">
+</testcase>
+<testcase name="DemoQA Tool Tips Tests › Tooltip visibility and timing" classname="tool-tips.spec.js" time="4.169">
+</testcase>
+<testcase name="DemoQA Tool Tips Tests › Tooltip content accuracy" classname="tool-tips.spec.js" time="6.083">
+</testcase>
+<testcase name="DemoQA Tool Tips Tests › Negative scenario - Rapid hovering" classname="tool-tips.spec.js" time="6.548">
+</testcase>
+<testcase name="DemoQA Tool Tips Tests › Tooltip positioning and styling" classname="tool-tips.spec.js" time="2.773">
+</testcase>
+</testsuite>
+<testsuite name="alerts.spec.js" timestamp="2025-11-02T14:34:16.925Z" hostname="firefox" tests="3" failures="0" skipped="0" time="47.913" errors="0">
+<testcase name="DemoQA Alerts Tests › All alert buttons functionality" classname="alerts.spec.js" time="18.36">
+</testcase>
+<testcase name="DemoQA Alerts Tests › All alerts in sequence" classname="alerts.spec.js" time="23.936">
+</testcase>
+<testcase name="DemoQA Alerts Tests › Negative scenario - Handle multiple rapid alerts" classname="alerts.spec.js" time="5.617">
+</testcase>
+</testsuite>
+<testsuite name="automation-practice-form.spec.js" timestamp="2025-11-02T14:34:16.925Z" hostname="firefox" tests="9" failures="0" skipped="0" time="90.623" errors="0">
+<testcase name="DemoQA Automation Practice Form Tests › Fill form with valid data and verify submission" classname="automation-practice-form.spec.js" time="16.2">
+<system-out>
+<![CDATA[File upload error: ENOENT: no such file or directory, stat 'data/test-image.jpg'
+]]>
+</system-out>
+<system-err>
+<![CDATA[[@faker-js/faker]: faker.phone.number(format) is deprecated since v8.1 and will be removed in v9.0. Please use faker.phone.number(), faker.string.numeric() or faker.helpers.fromRegExp() instead.
+]]>
+</system-err>
+</testcase>
+<testcase name="DemoQA Automation Practice Form Tests › Form validation with invalid data" classname="automation-practice-form.spec.js" time="11.497">
+</testcase>
+<testcase name="DemoQA Automation Practice Form Tests › Mandatory field validation" classname="automation-practice-form.spec.js" time="8.042">
+</testcase>
+<testcase name="DemoQA Automation Practice Form Tests › Form with minimal required data" classname="automation-practice-form.spec.js" time="6.149">
+</testcase>
+<testcase name="DemoQA Automation Practice Form Tests › Form with special characters and edge cases" classname="automation-practice-form.spec.js" time="6.037">
+</testcase>
+<testcase name="DemoQA Automation Practice Form Tests › Parameterized test: Male user with full data" classname="automation-practice-form.spec.js" time="8.095">
+</testcase>
+<testcase name="DemoQA Automation Practice Form Tests › Parameterized test: Female user with full data" classname="automation-practice-form.spec.js" time="11.662">
+</testcase>
+<testcase name="DemoQA Automation Practice Form Tests › Parameterized test: Other gender with special characters" classname="automation-practice-form.spec.js" time="11.624">
+</testcase>
+<testcase name="DemoQA Automation Practice Form Tests › Parameterized test: User with minimal required fields" classname="automation-practice-form.spec.js" time="11.317">
+</testcase>
+</testsuite>
+<testsuite name="select-menu.spec.js" timestamp="2025-11-02T14:34:16.925Z" hostname="firefox" tests="7" failures="0" skipped="0" time="70.352" errors="0">
+<testcase name="DemoQA Select Menu Tests › All select menu functionality as specified" classname="select-menu.spec.js" time="6.254">
+</testcase>
+<testcase name="DemoQA Select Menu Tests › All select menus in sequence" classname="select-menu.spec.js" time="13.797">
+</testcase>
+<testcase name="DemoQA Select Menu Tests › Select menu validation" classname="select-menu.spec.js" time="7.566">
+</testcase>
+<testcase name="DemoQA Select Menu Tests › Select menu with different options" classname="select-menu.spec.js" time="10.647">
+</testcase>
+<testcase name="DemoQA Select Menu Tests › Select menu edge cases" classname="select-menu.spec.js" time="10.693">
+</testcase>
+<testcase name="DemoQA Select Menu Tests › Negative scenario - Invalid selections" classname="select-menu.spec.js" time="13.727">
+</testcase>
+<testcase name="DemoQA Select Menu Tests › All 5 select elements are present" classname="select-menu.spec.js" time="7.668">
+</testcase>
+</testsuite>
+<testsuite name="text-box.spec.js" timestamp="2025-11-02T14:34:16.925Z" hostname="firefox" tests="10" failures="0" skipped="0" time="54.194" errors="0">
+<testcase name="DemoQA Text Box Tests › Fill text box with random data and verify output" classname="text-box.spec.js" time="6.366">
+</testcase>
+<testcase name="DemoQA Text Box Tests › Text box with empty fields" classname="text-box.spec.js" time="9.342">
+</testcase>
+<testcase name="DemoQA Text Box Tests › Text box with invalid email format" classname="text-box.spec.js" time="6.793">
+</testcase>
+<testcase name="DemoQA Text Box Tests › Text box with special characters and long text" classname="text-box.spec.js" time="7.613">
+</testcase>
+<testcase name="DemoQA Text Box Tests › Text box with maximum length data" classname="text-box.spec.js" time="5.716">
+</testcase>
+<testcase name="DemoQA Text Box Tests › Text box with only required fields" classname="text-box.spec.js" time="3.339">
+</testcase>
+<testcase name="DemoQA Text Box Tests › Parameterized test: Standard user data" classname="text-box.spec.js" time="4.199">
+</testcase>
+<testcase name="DemoQA Text Box Tests › Parameterized test: User with special characters" classname="text-box.spec.js" time="4.405">
+</testcase>
+<testcase name="DemoQA Text Box Tests › Parameterized test: User with numbers in name" classname="text-box.spec.js" time="3.844">
+</testcase>
+<testcase name="DemoQA Text Box Tests › Parameterized test: User with minimal address" classname="text-box.spec.js" time="2.577">
+</testcase>
+</testsuite>
+<testsuite name="tool-tips.spec.js" timestamp="2025-11-02T14:34:16.925Z" hostname="firefox" tests="6" failures="0" skipped="0" time="32.463" errors="0">
+<testcase name="DemoQA Tool Tips Tests › All tooltips functionality" classname="tool-tips.spec.js" time="6.325">
+</testcase>
+<testcase name="DemoQA Tool Tips Tests › All tooltips in sequence" classname="tool-tips.spec.js" time="6.262">
+</testcase>
+<testcase name="DemoQA Tool Tips Tests › Tooltip visibility and timing" classname="tool-tips.spec.js" time="4.335">
+</testcase>
+<testcase name="DemoQA Tool Tips Tests › Tooltip content accuracy" classname="tool-tips.spec.js" time="6.16">
+</testcase>
+<testcase name="DemoQA Tool Tips Tests › Negative scenario - Rapid hovering" classname="tool-tips.spec.js" time="6.449">
+</testcase>
+<testcase name="DemoQA Tool Tips Tests › Tooltip positioning and styling" classname="tool-tips.spec.js" time="2.932">
+</testcase>
+</testsuite>
+</testsuites>

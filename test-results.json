@@ -1,0 +1,3311 @@
+{
+  "config": {
+    "configFile": "/media/sirano/4TB/1TB/ESDE/4c/4c_1s_AutoTestingJS/AutoTestingJS/playwright.config.js",
+    "rootDir": "/media/sirano/4TB/1TB/ESDE/4c/4c_1s_AutoTestingJS/AutoTestingJS/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 20
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        {
+          "outputFolder": "playwright-report"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results.json"
+        }
+      ],
+      [
+        "junit",
+        {
+          "outputFile": "test-results.xml"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/media/sirano/4TB/1TB/ESDE/4c/4c_1s_AutoTestingJS/AutoTestingJS/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 20
+        },
+        "id": "chrome",
+        "name": "chrome",
+        "testDir": "/media/sirano/4TB/1TB/ESDE/4c/4c_1s_AutoTestingJS/AutoTestingJS/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/media/sirano/4TB/1TB/ESDE/4c/4c_1s_AutoTestingJS/AutoTestingJS/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 20
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "/media/sirano/4TB/1TB/ESDE/4c/4c_1s_AutoTestingJS/AutoTestingJS/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.56.1",
+    "workers": 20,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "alerts.spec.js",
+      "file": "alerts.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "DemoQA Alerts Tests",
+          "file": "alerts.spec.js",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "All alert buttons functionality",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 13796,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Alert Button",
+                          "duration": 360
+                        },
+                        {
+                          "title": "Timer Alert Button",
+                          "duration": 5184
+                        },
+                        {
+                          "title": "Confirm Button - Accept",
+                          "duration": 49
+                        },
+                        {
+                          "title": "Confirm Button - Dismiss",
+                          "duration": 199
+                        },
+                        {
+                          "title": "Prompt Button - Accept with text",
+                          "duration": 265
+                        },
+                        {
+                          "title": "Prompt Button - Dismiss",
+                          "duration": 5366
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:20.602Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "50755f9e77187a1785a7-2451c880ae869a13dc60",
+              "file": "alerts.spec.js",
+              "line": 13,
+              "column": 3
+            },
+            {
+              "title": "All alerts in sequence",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 24037,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-02T14:34:20.823Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "50755f9e77187a1785a7-b8328242cb34fbc69279",
+              "file": "alerts.spec.js",
+              "line": 62,
+              "column": 3
+            },
+            {
+              "title": "Negative scenario - Handle multiple rapid alerts",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 4806,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Rapid alert clicking",
+                          "duration": 2373
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:21.268Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "50755f9e77187a1785a7-d136f3f00aa1442ab068",
+              "file": "alerts.spec.js",
+              "line": 71,
+              "column": 3
+            },
+            {
+              "title": "All alert buttons functionality",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 20,
+                      "parallelIndex": 10,
+                      "status": "passed",
+                      "duration": 18360,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Alert Button",
+                          "duration": 387
+                        },
+                        {
+                          "title": "Timer Alert Button",
+                          "duration": 6212
+                        },
+                        {
+                          "title": "Confirm Button - Accept",
+                          "duration": 1395
+                        },
+                        {
+                          "title": "Confirm Button - Dismiss",
+                          "duration": 705
+                        },
+                        {
+                          "title": "Prompt Button - Accept with text",
+                          "duration": 751
+                        },
+                        {
+                          "title": "Prompt Button - Dismiss",
+                          "duration": 5635
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:32.716Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "50755f9e77187a1785a7-ac6686ecb8b5a5aab6e8",
+              "file": "alerts.spec.js",
+              "line": 13,
+              "column": 3
+            },
+            {
+              "title": "All alerts in sequence",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 21,
+                      "parallelIndex": 13,
+                      "status": "passed",
+                      "duration": 23936,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-02T14:34:32.862Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "50755f9e77187a1785a7-b63a8d6e5a0d37341499",
+              "file": "alerts.spec.js",
+              "line": 62,
+              "column": 3
+            },
+            {
+              "title": "Negative scenario - Handle multiple rapid alerts",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 22,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 5617,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Rapid alert clicking",
+                          "duration": 2154
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:33.007Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "50755f9e77187a1785a7-c30f5bcc98f522898c02",
+              "file": "alerts.spec.js",
+              "line": 71,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "automation-practice-form.spec.js",
+      "file": "automation-practice-form.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "DemoQA Automation Practice Form Tests",
+          "file": "automation-practice-form.spec.js",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Fill form with valid data and verify submission",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 9755,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "File upload error: ENOENT: no such file or directory, stat 'data/test-image.jpg'\n"
+                        }
+                      ],
+                      "stderr": [
+                        {
+                          "text": "[@faker-js/faker]: faker.phone.number(format) is deprecated since v8.1 and will be removed in v9.0. Please use faker.phone.number(), faker.string.numeric() or faker.helpers.fromRegExp() instead.\n"
+                        }
+                      ],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Fill form with valid data",
+                          "duration": 6591
+                        },
+                        {
+                          "title": "Submit form and verify results",
+                          "duration": 1049
+                        },
+                        {
+                          "title": "Close modal",
+                          "duration": 76
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:21.167Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f2b92aa6a143536315c3-32969926fa08295f32da",
+              "file": "automation-practice-form.spec.js",
+              "line": 13,
+              "column": 3
+            },
+            {
+              "title": "Form validation with invalid data",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 6465,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Fill form with invalid data",
+                          "duration": 1410
+                        },
+                        {
+                          "title": "Submit form and check for validation errors",
+                          "duration": 1817
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:21.542Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f2b92aa6a143536315c3-1a8d8989dfad1a7db77c",
+              "file": "automation-practice-form.spec.js",
+              "line": 43,
+              "column": 3
+            },
+            {
+              "title": "Mandatory field validation",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 5,
+                      "status": "passed",
+                      "duration": 3804,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Submit empty form",
+                          "duration": 1307
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:20.538Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f2b92aa6a143536315c3-01a192705668ef970261",
+              "file": "automation-practice-form.spec.js",
+              "line": 58,
+              "column": 3
+            },
+            {
+              "title": "Form with minimal required data",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 6,
+                      "status": "passed",
+                      "duration": 5665,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Fill form with minimal required data",
+                          "duration": 2125
+                        },
+                        {
+                          "title": "Submit and verify minimal data submission",
+                          "duration": 1146
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:21.562Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f2b92aa6a143536315c3-5c32865aff8b280b5422",
+              "file": "automation-practice-form.spec.js",
+              "line": 72,
+              "column": 3
+            },
+            {
+              "title": "Form with special characters and edge cases",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 7,
+                      "status": "passed",
+                      "duration": 5606,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Fill form with edge case data",
+                          "duration": 2392
+                        },
+                        {
+                          "title": "Submit and verify edge case data",
+                          "duration": 1163
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:20.664Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f2b92aa6a143536315c3-13ab3bcad46ba9fd1cdf",
+              "file": "automation-practice-form.spec.js",
+              "line": 96,
+              "column": 3
+            },
+            {
+              "title": "Parameterized test: Male user with full data",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 8,
+                      "status": "passed",
+                      "duration": 5400,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Fill form with Male user with full data",
+                          "duration": 1672
+                        },
+                        {
+                          "title": "Submit and verify Male user with full data",
+                          "duration": 1464
+                        },
+                        {
+                          "title": "Close modal",
+                          "duration": 146
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:20.420Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f2b92aa6a143536315c3-72e0de88d4ed2568254f",
+              "file": "automation-practice-form.spec.js",
+              "line": 168,
+              "column": 5
+            },
+            {
+              "title": "Parameterized test: Female user with full data",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 9,
+                      "status": "passed",
+                      "duration": 6204,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Fill form with Female user with full data",
+                          "duration": 2270
+                        },
+                        {
+                          "title": "Submit and verify Female user with full data",
+                          "duration": 1089
+                        },
+                        {
+                          "title": "Close modal",
+                          "duration": 189
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:21.139Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f2b92aa6a143536315c3-2d40a473957f1eae21d5",
+              "file": "automation-practice-form.spec.js",
+              "line": 168,
+              "column": 5
+            },
+            {
+              "title": "Parameterized test: Other gender with special characters",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 10,
+                      "parallelIndex": 10,
+                      "status": "passed",
+                      "duration": 6266,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Fill form with Other gender with special characters",
+                          "duration": 2124
+                        },
+                        {
+                          "title": "Submit and verify Other gender with special characters",
+                          "duration": 1246
+                        },
+                        {
+                          "title": "Close modal",
+                          "duration": 91
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:21.194Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f2b92aa6a143536315c3-620f73f71dd69ac4df0f",
+              "file": "automation-practice-form.spec.js",
+              "line": 168,
+              "column": 5
+            },
+            {
+              "title": "Parameterized test: User with minimal required fields",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 11,
+                      "status": "passed",
+                      "duration": 5608,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Fill form with User with minimal required fields",
+                          "duration": 2386
+                        },
+                        {
+                          "title": "Submit and verify User with minimal required fields",
+                          "duration": 1012
+                        },
+                        {
+                          "title": "Close modal",
+                          "duration": 41
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:21.068Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f2b92aa6a143536315c3-bc404878f620f6274d1d",
+              "file": "automation-practice-form.spec.js",
+              "line": 168,
+              "column": 5
+            },
+            {
+              "title": "Fill form with valid data and verify submission",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 23,
+                      "parallelIndex": 19,
+                      "status": "passed",
+                      "duration": 16200,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "File upload error: ENOENT: no such file or directory, stat 'data/test-image.jpg'\n"
+                        }
+                      ],
+                      "stderr": [
+                        {
+                          "text": "[@faker-js/faker]: faker.phone.number(format) is deprecated since v8.1 and will be removed in v9.0. Please use faker.phone.number(), faker.string.numeric() or faker.helpers.fromRegExp() instead.\n"
+                        }
+                      ],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Fill form with valid data",
+                          "duration": 10441
+                        },
+                        {
+                          "title": "Submit form and verify results",
+                          "duration": 983
+                        },
+                        {
+                          "title": "Close modal",
+                          "duration": 73
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:33.226Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f2b92aa6a143536315c3-084d1329a73deac8938c",
+              "file": "automation-practice-form.spec.js",
+              "line": 13,
+              "column": 3
+            },
+            {
+              "title": "Form validation with invalid data",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 24,
+                      "parallelIndex": 8,
+                      "status": "passed",
+                      "duration": 11497,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Fill form with invalid data",
+                          "duration": 2552
+                        },
+                        {
+                          "title": "Submit form and check for validation errors",
+                          "duration": 4769
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:33.220Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f2b92aa6a143536315c3-a0b4b26baaaccc1ce27d",
+              "file": "automation-practice-form.spec.js",
+              "line": 43,
+              "column": 3
+            },
+            {
+              "title": "Mandatory field validation",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 25,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 8042,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Submit empty form",
+                          "duration": 2104
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:33.652Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f2b92aa6a143536315c3-d9bfa17d4eb7312e3d6d",
+              "file": "automation-practice-form.spec.js",
+              "line": 58,
+              "column": 3
+            },
+            {
+              "title": "Form with minimal required data",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 26,
+                      "parallelIndex": 9,
+                      "status": "passed",
+                      "duration": 6149,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Fill form with minimal required data",
+                          "duration": 1281
+                        },
+                        {
+                          "title": "Submit and verify minimal data submission",
+                          "duration": 1340
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:34.017Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f2b92aa6a143536315c3-28192f9c1aa7ee9ca816",
+              "file": "automation-practice-form.spec.js",
+              "line": 72,
+              "column": 3
+            },
+            {
+              "title": "Form with special characters and edge cases",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 27,
+                      "parallelIndex": 16,
+                      "status": "passed",
+                      "duration": 6037,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Fill form with edge case data",
+                          "duration": 1334
+                        },
+                        {
+                          "title": "Submit and verify edge case data",
+                          "duration": 1264
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:34.200Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f2b92aa6a143536315c3-a8b7857fd223f6730ef0",
+              "file": "automation-practice-form.spec.js",
+              "line": 96,
+              "column": 3
+            },
+            {
+              "title": "Parameterized test: Male user with full data",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 28,
+                      "parallelIndex": 14,
+                      "status": "passed",
+                      "duration": 8095,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Fill form with Male user with full data",
+                          "duration": 1963
+                        },
+                        {
+                          "title": "Submit and verify Male user with full data",
+                          "duration": 1951
+                        },
+                        {
+                          "title": "Close modal",
+                          "duration": 372
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:34.373Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f2b92aa6a143536315c3-a538954968ba424b9f6b",
+              "file": "automation-practice-form.spec.js",
+              "line": 168,
+              "column": 5
+            },
+            {
+              "title": "Parameterized test: Female user with full data",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 29,
+                      "parallelIndex": 15,
+                      "status": "passed",
+                      "duration": 11662,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Fill form with Female user with full data",
+                          "duration": 4233
+                        },
+                        {
+                          "title": "Submit and verify Female user with full data",
+                          "duration": 1491
+                        },
+                        {
+                          "title": "Close modal",
+                          "duration": 197
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:34.365Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f2b92aa6a143536315c3-04dea7ef44885d68fa53",
+              "file": "automation-practice-form.spec.js",
+              "line": 168,
+              "column": 5
+            },
+            {
+              "title": "Parameterized test: Other gender with special characters",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 30,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 11624,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Fill form with Other gender with special characters",
+                          "duration": 4924
+                        },
+                        {
+                          "title": "Submit and verify Other gender with special characters",
+                          "duration": 1556
+                        },
+                        {
+                          "title": "Close modal",
+                          "duration": 127
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:34.494Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f2b92aa6a143536315c3-1109b079eca6a24a8d68",
+              "file": "automation-practice-form.spec.js",
+              "line": 168,
+              "column": 5
+            },
+            {
+              "title": "Parameterized test: User with minimal required fields",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 31,
+                      "parallelIndex": 12,
+                      "status": "passed",
+                      "duration": 11317,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Fill form with User with minimal required fields",
+                          "duration": 2909
+                        },
+                        {
+                          "title": "Submit and verify User with minimal required fields",
+                          "duration": 1474
+                        },
+                        {
+                          "title": "Close modal",
+                          "duration": 119
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:34.728Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f2b92aa6a143536315c3-e00bed44a0043f16a087",
+              "file": "automation-practice-form.spec.js",
+              "line": 168,
+              "column": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "select-menu.spec.js",
+      "file": "select-menu.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "DemoQA Select Menu Tests",
+          "file": "select-menu.spec.js",
+          "line": 4,
+          "column": 6,
+          "specs": [
+            {
+              "title": "All select menu functionality as specified",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 12,
+                      "status": "passed",
+                      "duration": 6265,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Select Value - Group 2, option 1",
+                          "duration": 1428
+                        },
+                        {
+                          "title": "Select One - Other",
+                          "duration": 1346
+                        },
+                        {
+                          "title": "Old Style Select Menu - Green",
+                          "duration": 261
+                        },
+                        {
+                          "title": "Multiselect drop down - Volvo, Saab",
+                          "duration": 267
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:18.298Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a0ec64b811cc171abf54-5b247039557d38bcbf86",
+              "file": "select-menu.spec.js",
+              "line": 12,
+              "column": 3
+            },
+            {
+              "title": "All select menus in sequence",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 13,
+                      "parallelIndex": 13,
+                      "status": "passed",
+                      "duration": 9406,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-02T14:34:18.219Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a0ec64b811cc171abf54-f6aef324594e9da55ef3",
+              "file": "select-menu.spec.js",
+              "line": 39,
+              "column": 3
+            },
+            {
+              "title": "Select menu validation",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 14,
+                      "parallelIndex": 14,
+                      "status": "passed",
+                      "duration": 4623,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Perform all selections",
+                          "duration": 2627
+                        },
+                        {
+                          "title": "Validate all selections",
+                          "duration": 49
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:18.390Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a0ec64b811cc171abf54-366ac845f6525080c87f",
+              "file": "select-menu.spec.js",
+              "line": 49,
+              "column": 3
+            },
+            {
+              "title": "Select menu with different options",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 15,
+                      "parallelIndex": 15,
+                      "status": "passed",
+                      "duration": 5429,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Different Select Value options",
+                          "duration": 1428
+                        },
+                        {
+                          "title": "Different Select One options",
+                          "duration": 1235
+                        },
+                        {
+                          "title": "Different Old Style options",
+                          "duration": 85
+                        },
+                        {
+                          "title": "Different Multiselect options",
+                          "duration": 147
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:18.154Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a0ec64b811cc171abf54-a0028fbcce581c74d498",
+              "file": "select-menu.spec.js",
+              "line": 74,
+              "column": 3
+            },
+            {
+              "title": "Select menu edge cases",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 16,
+                      "parallelIndex": 16,
+                      "status": "passed",
+                      "duration": 4609,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Selecting same option multiple times",
+                          "duration": 2626
+                        },
+                        {
+                          "title": "Multiselect with all options",
+                          "duration": 51
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:18.216Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a0ec64b811cc171abf54-7dfa44c8e9fe29af866a",
+              "file": "select-menu.spec.js",
+              "line": 101,
+              "column": 3
+            },
+            {
+              "title": "Negative scenario - Invalid selections",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 17,
+                      "parallelIndex": 17,
+                      "status": "passed",
+                      "duration": 8938,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Selecting non-existent options",
+                          "duration": 1397
+                        },
+                        {
+                          "title": "Multiselect with invalid options",
+                          "duration": 5013
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:18.274Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a0ec64b811cc171abf54-9580a65ac1bade462dfc",
+              "file": "select-menu.spec.js",
+              "line": 119,
+              "column": 3
+            },
+            {
+              "title": "All 5 select elements are present",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 18,
+                      "parallelIndex": 18,
+                      "status": "passed",
+                      "duration": 2955,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Verify all 5 select elements exist on page",
+                          "duration": 193
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:18.533Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a0ec64b811cc171abf54-202dcd93724888bd5a83",
+              "file": "select-menu.spec.js",
+              "line": 145,
+              "column": 3
+            },
+            {
+              "title": "All select menu functionality as specified",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 32,
+                      "parallelIndex": 5,
+                      "status": "passed",
+                      "duration": 6254,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Select Value - Group 2, option 1",
+                          "duration": 1534
+                        },
+                        {
+                          "title": "Select One - Other",
+                          "duration": 1253
+                        },
+                        {
+                          "title": "Old Style Select Menu - Green",
+                          "duration": 83
+                        },
+                        {
+                          "title": "Multiselect drop down - Volvo, Saab",
+                          "duration": 85
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:32.560Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a0ec64b811cc171abf54-947f0be245b560a00c4c",
+              "file": "select-menu.spec.js",
+              "line": 12,
+              "column": 3
+            },
+            {
+              "title": "All select menus in sequence",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 33,
+                      "parallelIndex": 7,
+                      "status": "passed",
+                      "duration": 13797,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-02T14:34:33.540Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a0ec64b811cc171abf54-189d6afec608562031b4",
+              "file": "select-menu.spec.js",
+              "line": 39,
+              "column": 3
+            },
+            {
+              "title": "Select menu validation",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 34,
+                      "parallelIndex": 18,
+                      "status": "passed",
+                      "duration": 7566,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Perform all selections",
+                          "duration": 3403
+                        },
+                        {
+                          "title": "Validate all selections",
+                          "duration": 310
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:33.919Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a0ec64b811cc171abf54-979f095a923b771e6a5b",
+              "file": "select-menu.spec.js",
+              "line": 49,
+              "column": 3
+            },
+            {
+              "title": "Select menu with different options",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 35,
+                      "parallelIndex": 11,
+                      "status": "passed",
+                      "duration": 10647,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Different Select Value options",
+                          "duration": 2994
+                        },
+                        {
+                          "title": "Different Select One options",
+                          "duration": 1496
+                        },
+                        {
+                          "title": "Different Old Style options",
+                          "duration": 204
+                        },
+                        {
+                          "title": "Different Multiselect options",
+                          "duration": 177
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:34.171Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a0ec64b811cc171abf54-af67d94f2dde1ee6fcd9",
+              "file": "select-menu.spec.js",
+              "line": 74,
+              "column": 3
+            },
+            {
+              "title": "Select menu edge cases",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 36,
+                      "parallelIndex": 17,
+                      "status": "passed",
+                      "duration": 10693,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Selecting same option multiple times",
+                          "duration": 3474
+                        },
+                        {
+                          "title": "Multiselect with all options",
+                          "duration": 114
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:34.720Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a0ec64b811cc171abf54-a9a5c648659376263cfc",
+              "file": "select-menu.spec.js",
+              "line": 101,
+              "column": 3
+            },
+            {
+              "title": "Negative scenario - Invalid selections",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 37,
+                      "parallelIndex": 6,
+                      "status": "passed",
+                      "duration": 13727,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Selecting non-existent options",
+                          "duration": 1687
+                        },
+                        {
+                          "title": "Multiselect with invalid options",
+                          "duration": 5008
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:35.180Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a0ec64b811cc171abf54-279412a04801ed4cdc11",
+              "file": "select-menu.spec.js",
+              "line": 119,
+              "column": 3
+            },
+            {
+              "title": "All 5 select elements are present",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 38,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 7668,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Verify all 5 select elements exist on page",
+                          "duration": 369
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:35.812Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a0ec64b811cc171abf54-0375877ed845c13c3063",
+              "file": "select-menu.spec.js",
+              "line": 145,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "text-box.spec.js",
+      "file": "text-box.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "DemoQA Text Box Tests",
+          "file": "text-box.spec.js",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Fill text box with random data and verify output",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 19,
+                      "parallelIndex": 19,
+                      "status": "passed",
+                      "duration": 4417,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Fill text box with random data",
+                          "duration": 1777
+                        },
+                        {
+                          "title": "Submit form and verify output",
+                          "duration": 284
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:21.233Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d2bd6a65dad0705e9681-a0855e847b235eb35dcb",
+              "file": "text-box.spec.js",
+              "line": 13,
+              "column": 3
+            },
+            {
+              "title": "Text box with empty fields",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 18,
+                      "parallelIndex": 18,
+                      "status": "passed",
+                      "duration": 7436,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Submit empty form",
+                          "duration": 343
+                        },
+                        {
+                          "title": "Verify no output is generated",
+                          "duration": 5020
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:25.264Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d2bd6a65dad0705e9681-1e14b3d64d4a871fd3df",
+              "file": "text-box.spec.js",
+              "line": 31,
+              "column": 3
+            },
+            {
+              "title": "Text box with invalid email format",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 16,
+                      "parallelIndex": 16,
+                      "status": "passed",
+                      "duration": 3711,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Fill form with invalid email",
+                          "duration": 1572
+                        },
+                        {
+                          "title": "Check for email validation",
+                          "duration": 69
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:26.797Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d2bd6a65dad0705e9681-b00506888040e966ac2b",
+              "file": "text-box.spec.js",
+              "line": 51,
+              "column": 3
+            },
+            {
+              "title": "Text box with special characters and long text",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 14,
+                      "parallelIndex": 14,
+                      "status": "passed",
+                      "duration": 3535,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Fill form with special characters",
+                          "duration": 1682
+                        },
+                        {
+                          "title": "Submit and verify special characters are handled",
+                          "duration": 254
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:27.041Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d2bd6a65dad0705e9681-02391361f3cbdc4893ea",
+              "file": "text-box.spec.js",
+              "line": 69,
+              "column": 3
+            },
+            {
+              "title": "Text box with maximum length data",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 15,
+                      "parallelIndex": 15,
+                      "status": "passed",
+                      "duration": 3260,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Fill form with maximum length data",
+                          "duration": 1262
+                        },
+                        {
+                          "title": "Submit and verify long data is handled",
+                          "duration": 212
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:27.673Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d2bd6a65dad0705e9681-8384bc835bf5e926f618",
+              "file": "text-box.spec.js",
+              "line": 91,
+              "column": 3
+            },
+            {
+              "title": "Text box with only required fields",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 5,
+                      "status": "passed",
+                      "duration": 2498,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Fill form with minimal required data",
+                          "duration": 450
+                        },
+                        {
+                          "title": "Submit and verify minimal data",
+                          "duration": 200
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:24.645Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d2bd6a65dad0705e9681-5c91c09ed748e64f9cae",
+              "file": "text-box.spec.js",
+              "line": 112,
+              "column": 3
+            },
+            {
+              "title": "Parameterized test: Standard user data",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 12,
+                      "status": "passed",
+                      "duration": 3189,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Fill form with Standard user data",
+                          "duration": 1005
+                        },
+                        {
+                          "title": "Submit and verify Standard user data",
+                          "duration": 186
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:28.087Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d2bd6a65dad0705e9681-bff91245581eafbb9e40",
+              "file": "text-box.spec.js",
+              "line": 173,
+              "column": 5
+            },
+            {
+              "title": "Parameterized test: User with special characters",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 19,
+                      "parallelIndex": 19,
+                      "status": "passed",
+                      "duration": 2878,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Fill form with User with special characters",
+                          "duration": 736
+                        },
+                        {
+                          "title": "Submit and verify User with special characters",
+                          "duration": 191
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:25.935Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d2bd6a65dad0705e9681-caf9c63e37869a04618f",
+              "file": "text-box.spec.js",
+              "line": 173,
+              "column": 5
+            },
+            {
+              "title": "Parameterized test: User with numbers in name",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 8,
+                      "status": "passed",
+                      "duration": 2879,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Fill form with User with numbers in name",
+                          "duration": 680
+                        },
+                        {
+                          "title": "Submit and verify User with numbers in name",
+                          "duration": 190
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:26.059Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d2bd6a65dad0705e9681-70cc1c8a1d0da973154b",
+              "file": "text-box.spec.js",
+              "line": 173,
+              "column": 5
+            },
+            {
+              "title": "Parameterized test: User with minimal address",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 3579,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Fill form with User with minimal address",
+                          "duration": 1158
+                        },
+                        {
+                          "title": "Submit and verify User with minimal address",
+                          "duration": 410
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:26.345Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d2bd6a65dad0705e9681-930f63aefcba0f00ab78",
+              "file": "text-box.spec.js",
+              "line": 173,
+              "column": 5
+            },
+            {
+              "title": "Fill text box with random data and verify output",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 32,
+                      "parallelIndex": 5,
+                      "status": "passed",
+                      "duration": 6366,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Fill text box with random data",
+                          "duration": 2233
+                        },
+                        {
+                          "title": "Submit form and verify output",
+                          "duration": 316
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:43.122Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d2bd6a65dad0705e9681-8904423015e7918d9f93",
+              "file": "text-box.spec.js",
+              "line": 13,
+              "column": 3
+            },
+            {
+              "title": "Text box with empty fields",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 27,
+                      "parallelIndex": 16,
+                      "status": "passed",
+                      "duration": 9342,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Submit empty form",
+                          "duration": 1230
+                        },
+                        {
+                          "title": "Verify no output is generated",
+                          "duration": 5054
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:41.174Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d2bd6a65dad0705e9681-878c720e333fd63387ec",
+              "file": "text-box.spec.js",
+              "line": 31,
+              "column": 3
+            },
+            {
+              "title": "Text box with invalid email format",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 26,
+                      "parallelIndex": 9,
+                      "status": "passed",
+                      "duration": 6793,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Fill form with invalid email",
+                          "duration": 2964
+                        },
+                        {
+                          "title": "Check for email validation",
+                          "duration": 223
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:41.833Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d2bd6a65dad0705e9681-b3691d69217c51d77e82",
+              "file": "text-box.spec.js",
+              "line": 51,
+              "column": 3
+            },
+            {
+              "title": "Text box with special characters and long text",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 22,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 7613,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Fill form with special characters",
+                          "duration": 3285
+                        },
+                        {
+                          "title": "Submit and verify special characters are handled",
+                          "duration": 483
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:41.886Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d2bd6a65dad0705e9681-5bcfcf86a4633392b305",
+              "file": "text-box.spec.js",
+              "line": 69,
+              "column": 3
+            },
+            {
+              "title": "Text box with maximum length data",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 28,
+                      "parallelIndex": 14,
+                      "status": "passed",
+                      "duration": 5716,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Fill form with maximum length data",
+                          "duration": 1395
+                        },
+                        {
+                          "title": "Submit and verify long data is handled",
+                          "duration": 290
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:45.049Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d2bd6a65dad0705e9681-cc4a3f9c57394642bb06",
+              "file": "text-box.spec.js",
+              "line": 91,
+              "column": 3
+            },
+            {
+              "title": "Text box with only required fields",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 34,
+                      "parallelIndex": 18,
+                      "status": "passed",
+                      "duration": 3339,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Fill form with minimal required data",
+                          "duration": 435
+                        },
+                        {
+                          "title": "Submit and verify minimal data",
+                          "duration": 234
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:50.339Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d2bd6a65dad0705e9681-b1de8314d8c0673cf840",
+              "file": "text-box.spec.js",
+              "line": 112,
+              "column": 3
+            },
+            {
+              "title": "Parameterized test: Standard user data",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 39,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 4199,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Fill form with Standard user data",
+                          "duration": 653
+                        },
+                        {
+                          "title": "Submit and verify Standard user data",
+                          "duration": 138
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:52.257Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d2bd6a65dad0705e9681-edc4bf7a449af336f5fb",
+              "file": "text-box.spec.js",
+              "line": 173,
+              "column": 5
+            },
+            {
+              "title": "Parameterized test: User with special characters",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 25,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 4405,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Fill form with User with special characters",
+                          "duration": 1200
+                        },
+                        {
+                          "title": "Submit and verify User with special characters",
+                          "duration": 213
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:47.757Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d2bd6a65dad0705e9681-2dc5f45fea6edef0fe7f",
+              "file": "text-box.spec.js",
+              "line": 173,
+              "column": 5
+            },
+            {
+              "title": "Parameterized test: User with numbers in name",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 26,
+                      "parallelIndex": 9,
+                      "status": "passed",
+                      "duration": 3844,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Fill form with User with numbers in name",
+                          "duration": 1069
+                        },
+                        {
+                          "title": "Submit and verify User with numbers in name",
+                          "duration": 284
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:48.698Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d2bd6a65dad0705e9681-3b20f64f6b12a0802f90",
+              "file": "text-box.spec.js",
+              "line": 173,
+              "column": 5
+            },
+            {
+              "title": "Parameterized test: User with minimal address",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 38,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2577,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Fill form with User with minimal address",
+                          "duration": 689
+                        },
+                        {
+                          "title": "Submit and verify User with minimal address",
+                          "duration": 155
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:52.757Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d2bd6a65dad0705e9681-5d387518dc34a366b6d5",
+              "file": "text-box.spec.js",
+              "line": 173,
+              "column": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "tool-tips.spec.js",
+      "file": "tool-tips.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "DemoQA Tool Tips Tests",
+          "file": "tool-tips.spec.js",
+          "line": 4,
+          "column": 6,
+          "specs": [
+            {
+              "title": "All tooltips functionality",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 7,
+                      "status": "passed",
+                      "duration": 5773,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Button tooltip",
+                          "duration": 707
+                        },
+                        {
+                          "title": "Text field tooltip",
+                          "duration": 1303
+                        },
+                        {
+                          "title": "Link tooltip",
+                          "duration": 1071
+                        },
+                        {
+                          "title": "Contrary link tooltip",
+                          "duration": 1050
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:26.599Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "db902b5a54d9e4bd45d7-285ab35a8e4999758516",
+              "file": "tool-tips.spec.js",
+              "line": 12,
+              "column": 3
+            },
+            {
+              "title": "All tooltips in sequence",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 11,
+                      "status": "passed",
+                      "duration": 5968,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-02T14:34:26.976Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "db902b5a54d9e4bd45d7-26b54b2a7340b43e93dd",
+              "file": "tool-tips.spec.js",
+              "line": 38,
+              "column": 3
+            },
+            {
+              "title": "Tooltip visibility and timing",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 5,
+                      "status": "passed",
+                      "duration": 4169,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Verify tooltip appears on hover",
+                          "duration": 659
+                        },
+                        {
+                          "title": "Verify tooltip disappears when not hovering",
+                          "duration": 1255
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:27.221Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "db902b5a54d9e4bd45d7-4ad2dc7f50b5d5bbb590",
+              "file": "tool-tips.spec.js",
+              "line": 51,
+              "column": 3
+            },
+            {
+              "title": "Tooltip content accuracy",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 17,
+                      "parallelIndex": 17,
+                      "status": "passed",
+                      "duration": 6083,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Button tooltip content",
+                          "duration": 1061
+                        },
+                        {
+                          "title": "Text field tooltip content",
+                          "duration": 1220
+                        },
+                        {
+                          "title": "Link tooltip content",
+                          "duration": 1052
+                        },
+                        {
+                          "title": "Contrary link tooltip content",
+                          "duration": 1052
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:27.430Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "db902b5a54d9e4bd45d7-017adfbc0cab0d242f07",
+              "file": "tool-tips.spec.js",
+              "line": 67,
+              "column": 3
+            },
+            {
+              "title": "Negative scenario - Rapid hovering",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 6,
+                      "status": "passed",
+                      "duration": 6548,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Rapid hover testing",
+                          "duration": 4328
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:27.485Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "db902b5a54d9e4bd45d7-e9fe5ac77e1ae271b303",
+              "file": "tool-tips.spec.js",
+              "line": 100,
+              "column": 3
+            },
+            {
+              "title": "Tooltip positioning and styling",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome",
+                  "projectName": "chrome",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 9,
+                      "status": "passed",
+                      "duration": 2773,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Verify tooltip positioning",
+                          "duration": 1081
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:27.639Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "db902b5a54d9e4bd45d7-7485774919a8368c0eed",
+              "file": "tool-tips.spec.js",
+              "line": 115,
+              "column": 3
+            },
+            {
+              "title": "All tooltips functionality",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 22,
+                      "parallelIndex": 4,
+                      "status": "passed",
+                      "duration": 6325,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Button tooltip",
+                          "duration": 695
+                        },
+                        {
+                          "title": "Text field tooltip",
+                          "duration": 1090
+                        },
+                        {
+                          "title": "Link tooltip",
+                          "duration": 1069
+                        },
+                        {
+                          "title": "Contrary link tooltip",
+                          "duration": 1057
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:49.565Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "db902b5a54d9e4bd45d7-648e53853bc8a5bd2805",
+              "file": "tool-tips.spec.js",
+              "line": 12,
+              "column": 3
+            },
+            {
+              "title": "All tooltips in sequence",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 32,
+                      "parallelIndex": 5,
+                      "status": "passed",
+                      "duration": 6262,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-11-02T14:34:49.590Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "db902b5a54d9e4bd45d7-d202dda87d7052fd8020",
+              "file": "tool-tips.spec.js",
+              "line": 38,
+              "column": 3
+            },
+            {
+              "title": "Tooltip visibility and timing",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 24,
+                      "parallelIndex": 8,
+                      "status": "passed",
+                      "duration": 4335,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Verify tooltip appears on hover",
+                          "duration": 595
+                        },
+                        {
+                          "title": "Verify tooltip disappears when not hovering",
+                          "duration": 1103
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:49.692Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "db902b5a54d9e4bd45d7-7c84b6930821655fe9a3",
+              "file": "tool-tips.spec.js",
+              "line": 51,
+              "column": 3
+            },
+            {
+              "title": "Tooltip content accuracy",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 30,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 6160,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Button tooltip content",
+                          "duration": 626
+                        },
+                        {
+                          "title": "Text field tooltip content",
+                          "duration": 1081
+                        },
+                        {
+                          "title": "Link tooltip content",
+                          "duration": 1061
+                        },
+                        {
+                          "title": "Contrary link tooltip content",
+                          "duration": 1054
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:50.511Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "db902b5a54d9e4bd45d7-63c29a5347b9057c380a",
+              "file": "tool-tips.spec.js",
+              "line": 67,
+              "column": 3
+            },
+            {
+              "title": "Negative scenario - Rapid hovering",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 27,
+                      "parallelIndex": 16,
+                      "status": "passed",
+                      "duration": 6449,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Rapid hover testing",
+                          "duration": 4018
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:50.580Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "db902b5a54d9e4bd45d7-b4cdb378102c32fffdaa",
+              "file": "tool-tips.spec.js",
+              "line": 100,
+              "column": 3
+            },
+            {
+              "title": "Tooltip positioning and styling",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 28,
+                      "parallelIndex": 14,
+                      "status": "passed",
+                      "duration": 2932,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Verify tooltip positioning",
+                          "duration": 596
+                        }
+                      ],
+                      "startTime": "2025-11-02T14:34:51.127Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "db902b5a54d9e4bd45d7-62245214a3b6f2d8bf76",
+              "file": "tool-tips.spec.js",
+              "line": 115,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-11-02T14:34:14.719Z",
+    "duration": 43951.472,
+    "expected": 70,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}
