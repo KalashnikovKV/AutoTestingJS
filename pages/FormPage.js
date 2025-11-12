@@ -82,6 +82,7 @@ class FormPage extends BasePage {
 
         await this.clickElement(hobbySelector, { force: true });
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.log(`Failed to select hobby ${hobby}:`, error.message);
       }
     }
@@ -93,6 +94,7 @@ class FormPage extends BasePage {
     try {
       await this.page.setInputFiles(this.selectors.picture, picturePath);
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.log('File upload error:', error.message);
     }
   }
@@ -102,12 +104,13 @@ class FormPage extends BasePage {
 
     try {
       await this.clickElement(this.selectors.state, { force: true });
-      await this.page.waitForTimeout(500);
+      await this.page.locator(this.selectors.state).waitFor({ state: 'visible' }).catch(() => {});
       await this.page.keyboard.type(state);
-      await this.page.waitForTimeout(300);
+      await this.page.locator(`text=${state}`).first().waitFor({ state: 'visible', timeout: 300 }).catch(() => {});
       await this.page.keyboard.press('Enter');
-      await this.page.waitForTimeout(300);
+      await this.page.locator(this.selectors.state).waitFor({ state: 'attached' }).catch(() => {});
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.log(`State selection error: ${state}`, error.message);
     }
   }
@@ -117,12 +120,13 @@ class FormPage extends BasePage {
 
     try {
       await this.clickElement(this.selectors.city, { force: true });
-      await this.page.waitForTimeout(500);
+      await this.page.locator(this.selectors.city).waitFor({ state: 'visible' }).catch(() => {});
       await this.page.keyboard.type(city);
-      await this.page.waitForTimeout(300);
+      await this.page.locator(`text=${city}`).first().waitFor({ state: 'visible', timeout: 300 }).catch(() => {});
       await this.page.keyboard.press('Enter');
-      await this.page.waitForTimeout(300);
+      await this.page.locator(this.selectors.city).waitFor({ state: 'attached' }).catch(() => {});
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.log(`City selection error: ${city}`, error.message);
     }
   }
@@ -147,6 +151,7 @@ class FormPage extends BasePage {
       try {
         await this.scrollToElement(this.selectors.submitButton);
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.log('Submit button scroll error:', error.message);
       }
 
@@ -195,6 +200,7 @@ class FormPage extends BasePage {
           return title.trim();
         }
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.log(`Modal title selector error: ${selector}`, error.message);
       }
     }
@@ -230,6 +236,7 @@ class FormPage extends BasePage {
         await this.page.keyboard.press('Escape');
       }
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.log('Modal close error:', error.message);
     }
   }
@@ -262,10 +269,12 @@ class FormPage extends BasePage {
               }
             }
           } catch (error) {
+            // eslint-disable-next-line no-console
             console.log('Element visibility check error:', error.message);
           }
         }
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.log(`Error selector check: ${selector}`, error.message);
       }
     }

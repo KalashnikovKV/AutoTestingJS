@@ -7,6 +7,11 @@ on:
     branches: [ main ]
   schedule:
     - cron: '0 0 * * *'  # Run daily at midnight UTC
+  workflow_dispatch:
+    inputs:
+      runThis:
+        description: 'Run specific tests by keyword (e.g., "alerts")'
+        required: false
 
 jobs:
   test:
@@ -33,18 +38,13 @@ jobs:
       run: npx playwright install --with-deps
     
     - name: Run Playwright tests
-      run: npx playwright test --project=${{ matrix.browser }} --reporter=html,json,junit
       env:
         VIEWPORT_WIDTH: ${{ matrix.viewport.width }}
         VIEWPORT_HEIGHT: ${{ matrix.viewport.height }}
         workers: 2
-    
-    - name: Run specific test by keyword
-      if: ${{ contains(github.event.head_commit.message, 'runThis') }}
-      run: npx playwright test --grep "${{ github.event.head_commit.message }}" --project=${{ matrix.browser }}
-      env:
-        VIEWPORT_WIDTH: ${{ matrix.viewport.width }}
-        VIEWPORT_HEIGHT: ${{ matrix.viewport.height }}
+        runThis: ${{ github.event.inputs.runThis }}
+        CI: true
+      run: npm test
     
     - uses: actions/upload-artifact@v4
       if: always()

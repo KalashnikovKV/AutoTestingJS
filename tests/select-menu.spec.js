@@ -34,6 +34,13 @@ test.describe('DemoQA Select Menu Tests', () => {
       expect(selections.multiSelect).toContain('volvo');
       expect(selections.multiSelect).toContain('saab');
     });
+
+    await test.step('Multiselect drop down - Black, Blue', async () => {
+      await selectMenuPage.selectColorMultiSelectOptions(['black', 'blue']);
+      const selections = await selectMenuPage.getSelectedValues();
+      expect(selections.colorMultiSelect).toBeDefined();
+      expect(selections.colorMultiSelect.toLowerCase()).toMatch(/black|blue/);
+    });
   });
 
   test('All select menus in sequence', async () => {

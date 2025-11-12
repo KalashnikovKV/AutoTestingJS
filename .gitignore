@@ -6,6 +6,8 @@ yarn-error.log*
 
 # Playwright
 test-results/
+test-results.xml
+test-results.json
 playwright-report/
 playwright/.cache/
 screenshots/

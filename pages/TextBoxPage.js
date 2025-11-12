@@ -36,8 +36,10 @@ class TextBoxPage extends BasePage {
 
   async getOutputText() {
     try {
-      await this.waitForElement(this.selectors.output, 5000);
-      return await this.getText(this.selectors.output);
+      const outputElement = this.page.locator(this.selectors.output);
+      await outputElement.waitFor({ state: 'visible', timeout: 5000 });
+      const text = await outputElement.textContent();
+      return text || '';
     } catch (error) {
       return '';
     }
@@ -65,36 +67,63 @@ class TextBoxPage extends BasePage {
   async parseOutputWithoutLineBreaks(outputText) {
     const data = {};
 
-    const nameMatch = outputText.match(/Name:([^E]*?)(?=Email:|$)/);
-    if (nameMatch) {
-      data.name = nameMatch[1].trim();
-    }
-
-    const emailMatch = outputText.match(/Email:([^C]*?)(?=Current Address|$)/);
-    if (emailMatch) {
-      data.email = emailMatch[1].trim();
-    } else {
-      const emailAltMatch = outputText.match(/Email:([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/);
-      if (emailAltMatch) {
-        data.email = emailAltMatch[1].trim();
+    // Name parsing - более гибкий с несколькими паттернами
+    const namePatterns = [
+      /Name:\s*([^E]*?)(?=Email:|$)/,
+      /Name:\s*([^\n]+)/,
+      /Name:\s*(.+?)(?=\s+Email:)/,
+    ];
+    for (const pattern of namePatterns) {
+      const match = outputText.match(pattern);
+      if (match && match[1] && match[1].trim()) {
+        data.name = match[1].trim();
+        break;
       }
     }
 
-    const currentAddressMatch = outputText.match(/Current Address\s*:\s*(.+?)(?=\s*(?:Permanent|Permananet)\s+Address|$)/);
-    if (currentAddressMatch) {
-      data.currentAddress = currentAddressMatch[1].trim();
-    } else {
-      const altMatch = outputText.match(/Current Address\s*:\s*(.+)$/);
-      if (altMatch) {
-        let addr = altMatch[1].trim();
+    // Email parsing - более гибкий с несколькими паттернами
+    const emailPatterns = [
+      /Email:\s*([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/,
+      /Email:\s*([^C]*?)(?=Current Address|$)/,
+      /Email:\s*([^\n]+)/,
+    ];
+    for (const pattern of emailPatterns) {
+      const match = outputText.match(pattern);
+      if (match && match[1] && match[1].trim()) {
+        data.email = match[1].trim();
+        break;
+      }
+    }
+
+    // Current Address parsing - более гибкий
+    const currentAddressPatterns = [
+      /Current Address\s*:\s*(.+?)(?=\s*(?:Permanent|Permananet)\s+Address|$)/,
+      /Current Address\s*:\s*(.+?)(?=Permanent|Permananet|$)/,
+      /Current Address\s*:\s*(.+)$/,
+    ];
+    for (const pattern of currentAddressPatterns) {
+      const match = outputText.match(pattern);
+      if (match && match[1] && match[1].trim()) {
+        let addr = match[1].trim();
         addr = addr.replace(/\s*(?:Permanent|Permananet)\s+Address\s*:.*$/, '').trim();
-        data.currentAddress = addr;
+        if (addr) {
+          data.currentAddress = addr;
+          break;
+        }
       }
     }
 
-    const permanentAddressMatch = outputText.match(/(?:Permanent|Permananet) Address\s*:\s*(.*?)$/);
-    if (permanentAddressMatch) {
-      data.permanentAddress = permanentAddressMatch[1].trim();
+    // Permanent Address parsing - более гибкий
+    const permanentAddressPatterns = [
+      /(?:Permanent|Permananet)\s+Address\s*:\s*(.*?)$/,
+      /(?:Permanent|Permananet)\s+Address\s*:\s*(.+)/,
+    ];
+    for (const pattern of permanentAddressPatterns) {
+      const match = outputText.match(pattern);
+      if (match && match[1] && match[1].trim()) {
+        data.permanentAddress = match[1].trim();
+        break;
+      }
     }
 
     return data;

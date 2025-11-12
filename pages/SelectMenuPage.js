@@ -62,15 +62,44 @@ class SelectMenuPage extends BasePage {
   }
 
   async selectColorMultiSelectOptions(options) {
+    const colorMultiSelectContainer = this.page.locator('#selectMenuContainer > div').nth(6);
+    
     for (const option of options) {
-      await this.page.click(this.selectors.colorMultiSelect);
+      await colorMultiSelectContainer.scrollIntoViewIfNeeded();
+      
+      const reactSelectControl = colorMultiSelectContainer.locator('[class*="control"]').first();
+      const reactSelectInput = colorMultiSelectContainer.locator('input[id*="react-select"]').first();
+      
+      await reactSelectControl.waitFor({ state: 'visible', timeout: TIMEOUTS.ELEMENT_WAIT });
+      
+      await this.page.locator('div[id*="react-select"][id*="-option"]').first().waitFor({ 
+        state: 'hidden', 
+        timeout: TIMEOUTS.SHORT 
+      }).catch(() => {});
+      
+      try {
+        await reactSelectInput.waitFor({ state: 'visible', timeout: TIMEOUTS.SHORT });
+        await reactSelectInput.click();
+      } catch {
+        await reactSelectControl.click();
+      }
+      
+      await this.page.locator('div[id*="react-select"][id*="-option"]').first().waitFor({ 
+        state: 'visible', 
+        timeout: TIMEOUTS.ELEMENT_WAIT 
+      });
       
       const optionText = option.charAt(0).toUpperCase() + option.slice(1);
       const optionLocator = this.page.locator(`div[id*="react-select"][id*="-option"]:has-text("${optionText}")`).first();
       await optionLocator.waitFor({ state: 'visible', timeout: TIMEOUTS.ELEMENT_WAIT });
       await optionLocator.click();
       
-      await optionLocator.waitFor({ state: 'hidden', timeout: TIMEOUTS.ELEMENT_WAIT }).catch(() => {});
+      await optionLocator.waitFor({ state: 'hidden', timeout: TIMEOUTS.SHORT }).catch(() => {});
+      
+      const menuStillOpen = await this.page.locator('div[id*="react-select"][id*="-option"]').first().isVisible({ timeout: 300 }).catch(() => false);
+      if (!menuStillOpen) {
+        await reactSelectControl.waitFor({ state: 'visible', timeout: TIMEOUTS.SHORT }).catch(() => {});
+      }
     }
   }
 
@@ -113,6 +142,55 @@ class SelectMenuPage extends BasePage {
       return Array.from(select.selectedOptions).map(option => option.value);
     });
     results.multiSelect = selectedOptions.join(',');
+    
+    try {
+      const colorMultiSelectContainer = this.page.locator('#selectMenuContainer > div').nth(6);
+      const colorMultiSelectText = await colorMultiSelectContainer.evaluate(el => {
+        const multiValueItems = Array.from(el.querySelectorAll('[class*="multiValue"]'));
+        if (multiValueItems.length > 0) {
+          const values = multiValueItems.map(item => {
+            const label = item.querySelector('[class*="multiValueLabel"]') || item;
+            const text = label.textContent || '';
+            return text.trim();
+          }).filter(text => text && text.length > 0);
+          
+          if (values.length > 0) {
+            return values.join(', ');
+          }
+        }
+        
+        const control = el.querySelector('[class*="control"]');
+        if (control) {
+          const valueContainer = control.querySelector('[class*="ValueContainer"]') || 
+                                control.querySelector('[class*="valueContainer"]') ||
+                                control;
+          
+          if (valueContainer) {
+            const visibleValues = Array.from(valueContainer.querySelectorAll('[class*="multiValue"]'))
+              .filter(item => {
+                const style = window.getComputedStyle(item);
+                return style.display !== 'none' && style.visibility !== 'hidden';
+              })
+              .map(item => {
+                const text = item.textContent || '';
+                return text.trim();
+              })
+              .filter(text => text && text.length > 0);
+            
+            if (visibleValues.length > 0) {
+              return visibleValues.join(', ');
+            }
+          }
+          
+          return '';
+        }
+        
+        return '';
+      });
+      results.colorMultiSelect = colorMultiSelectText || '';
+    } catch {
+      results.colorMultiSelect = '';
+    }
     
     return results;
   }

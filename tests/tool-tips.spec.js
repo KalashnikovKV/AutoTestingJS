@@ -51,15 +51,16 @@ test.describe('DemoQA Tool Tips Tests', () => {
   test('Tooltip visibility and timing', async () => {
     await test.step('Verify tooltip appears on hover', async () => {
       await toolTipsPage.hoverOverButton();
-      const tooltip = toolTipsPage.page.locator('.tooltip-inner');
-      await expect(tooltip).toBeVisible();
+      const tooltipText = await toolTipsPage.getTooltipText();
+      expect(tooltipText).not.toBeNull();
+      expect(tooltipText).toBeTruthy();
     });
 
     await test.step('Verify tooltip disappears when not hovering', async () => {
       await toolTipsPage.hoverOverButton();
       await toolTipsPage.page.mouse.move(0, 0);
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      const tooltip = toolTipsPage.page.locator('.tooltip-inner');
+      const tooltip = await toolTipsPage.getTooltipLocator();
       await expect(tooltip).toBeHidden();
     });
   });
@@ -116,7 +117,7 @@ test.describe('DemoQA Tool Tips Tests', () => {
   test('Tooltip positioning and styling', async () => {
     await test.step('Verify tooltip positioning', async () => {
       await toolTipsPage.hoverOverButton();
-      const tooltip = toolTipsPage.page.locator('.tooltip-inner');
+      const tooltip = await toolTipsPage.getTooltipLocator();
       await tooltip
         .waitFor({ state: 'visible', timeout: 5000 })
         .catch(() => {});

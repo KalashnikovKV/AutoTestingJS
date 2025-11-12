@@ -1,7 +1,6 @@
 const { test, expect } = require('@playwright/test');
 const AlertsPage = require('../pages/AlertsPage');
 const TestDataGenerator = require('../utils/testData');
-const { TIMEOUTS } = require('../utils/constants');
 
 test.describe('DemoQA Alerts Tests', () => {
   let alertsPage;
@@ -11,7 +10,7 @@ test.describe('DemoQA Alerts Tests', () => {
     await alertsPage.navigateTo('/alerts');
   });
 
-  test('All alert buttons functionality', async ({ page }) => {
+  test('All alert buttons functionality', async () => {
     await test.step('Alert Button', async () => {
       const alertPromise = alertsPage.handleAlert('accept');
       await alertsPage.clickAlertButton();

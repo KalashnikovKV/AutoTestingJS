@@ -138,7 +138,7 @@ class AlertsPage extends BasePage {
     const alertPromise6 = this.handleAlert('dismiss');
     await this.clickPromptButton();
     await alertPromise6;
-    await this.page.waitForTimeout(500);
+    await this.page.locator(this.selectors.promptResult).waitFor({ state: 'attached', timeout: 1000 }).catch(() => {});
     results.promptDismiss = await this.getPromptResult();
 
     return results;

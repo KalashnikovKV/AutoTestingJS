@@ -105,6 +105,7 @@ class BasePage {
       await this.page.waitForSelector(selector, { state: 'visible', timeout });
       return true;
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.log(`Element not visible: ${selector}`, error.message);
       return false;
     }
@@ -119,14 +120,11 @@ class BasePage {
     }
   }
 
-  async waitForTimeout(ms) {
-    await new Promise((resolve) => setTimeout(resolve, ms));
-  }
-
   async scrollToElement(selector) {
     try {
       await this.page.locator(selector).scrollIntoViewIfNeeded();
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.log('Scroll error:', error.message);
     }
   }
