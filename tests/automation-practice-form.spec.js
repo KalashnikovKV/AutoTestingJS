@@ -18,21 +18,17 @@ test.describe('DemoQA Automation Practice Form Tests', () => {
     });
 
     await test.step('Submit form and verify results', async () => {
-      const result = await formPage.validateFormSubmission();
+      await formPage.submitForm();
+      const modalTitle = await formPage.getModalTitle();
+      const results = await formPage.getFormResults();
 
-      if (!result.isValid && result.errors) {
-        await formPage.takeScreenshot('form-validation-failed');
-      }
-
-      expect(result.isValid).toBe(true);
-      expect(result.modalTitle).toBe('Thanks for submitting the form');
-
-      expect(result.results['Student Name']).toBe(
+      expect(modalTitle).toBe('Thanks for submitting the form');
+      expect(results['Student Name']).toBe(
         `${formData.firstName} ${formData.lastName}`
       );
-      expect(result.results['Student Email']).toBe(formData.email);
-      expect(result.results['Gender']).toBe(formData.gender);
-      expect(result.results['Mobile']).toBe(formData.mobile);
+      expect(results['Student Email']).toBe(formData.email);
+      expect(results['Gender']).toBe(formData.gender);
+      expect(results['Mobile']).toBe(formData.mobile);
     });
 
     await test.step('Close modal', async () => {
@@ -59,13 +55,11 @@ test.describe('DemoQA Automation Practice Form Tests', () => {
     await test.step('Submit empty form', async () => {
       await formPage.submitForm();
 
-      const firstNameField = formPage.page.locator('#firstName');
-      const lastNameField = formPage.page.locator('#lastName');
-      const mobileField = formPage.page.locator('#userNumber');
+      const requiredFields = await formPage.checkRequiredFields();
 
-      await expect(firstNameField).toHaveAttribute('required');
-      await expect(lastNameField).toHaveAttribute('required');
-      await expect(mobileField).toHaveAttribute('required');
+      expect(requiredFields.firstName).toBe(true);
+      expect(requiredFields.lastName).toBe(true);
+      expect(requiredFields.mobile).toBe(true);
     });
   });
 
@@ -83,13 +77,15 @@ test.describe('DemoQA Automation Practice Form Tests', () => {
     });
 
     await test.step('Submit and verify minimal data submission', async () => {
-      const result = await formPage.validateFormSubmission();
+      await formPage.submitForm();
+      const modalTitle = await formPage.getModalTitle();
+      const results = await formPage.getFormResults();
 
-      expect(result.isValid).toBe(true);
-      expect(result.results['Student Name']).toBe(
+      expect(modalTitle).toBe('Thanks for submitting the form');
+      expect(results['Student Name']).toBe(
         `${minimalData.firstName} ${minimalData.lastName}`
       );
-      expect(result.results['Student Email']).toBe(minimalData.email);
+      expect(results['Student Email']).toBe(minimalData.email);
     });
   });
 
@@ -108,10 +104,12 @@ test.describe('DemoQA Automation Practice Form Tests', () => {
     });
 
     await test.step('Submit and verify edge case data', async () => {
-      const result = await formPage.validateFormSubmission();
+      await formPage.submitForm();
+      const modalTitle = await formPage.getModalTitle();
+      const results = await formPage.getFormResults();
 
-      expect(result.isValid).toBe(true);
-      expect(result.results['Student Name']).toBe(
+      expect(modalTitle).toBe('Thanks for submitting the form');
+      expect(results['Student Name']).toBe(
         `${edgeCaseData.firstName} ${edgeCaseData.lastName}`
       );
     });
@@ -171,16 +169,17 @@ test.describe('DemoQA Automation Practice Form Tests', () => {
       });
 
       await test.step(`Submit and verify ${testSet.name}`, async () => {
-        const result = await formPage.validateFormSubmission();
+        await formPage.submitForm();
+        const modalTitle = await formPage.getModalTitle();
+        const results = await formPage.getFormResults();
 
-        expect(result.isValid).toBe(true);
-        expect(result.modalTitle).toBe('Thanks for submitting the form');
-        expect(result.results['Student Name']).toBe(
+        expect(modalTitle).toBe('Thanks for submitting the form');
+        expect(results['Student Name']).toBe(
           `${testSet.data.firstName} ${testSet.data.lastName}`
         );
-        expect(result.results['Student Email']).toBe(testSet.data.email);
-        expect(result.results['Gender']).toBe(testSet.data.gender);
-        expect(result.results['Mobile']).toBe(testSet.data.mobile);
+        expect(results['Student Email']).toBe(testSet.data.email);
+        expect(results['Gender']).toBe(testSet.data.gender);
+        expect(results['Mobile']).toBe(testSet.data.mobile);
       });
 
       await test.step('Close modal', async () => {

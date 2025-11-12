@@ -1,6 +1,7 @@
 const { test, expect } = require('@playwright/test');
 const AlertsPage = require('../pages/AlertsPage');
 const TestDataGenerator = require('../utils/testData');
+const { TIMEOUTS } = require('../utils/constants');
 
 test.describe('DemoQA Alerts Tests', () => {
   let alertsPage;
@@ -15,14 +16,16 @@ test.describe('DemoQA Alerts Tests', () => {
       const alertPromise = alertsPage.handleAlert('accept');
       await alertsPage.clickAlertButton();
       await alertPromise;
-      await expect(page.locator('#alertButton')).toBeVisible();
+      const isVisible = await alertsPage.isAlertButtonVisible();
+      expect(isVisible).toBe(true);
     });
 
     await test.step('Timer Alert Button', async () => {
       const alertPromise = alertsPage.handleAlert('accept');
       await alertsPage.clickTimerAlertButton();
       await alertPromise;
-      await expect(page.locator('#timerAlertButton')).toBeVisible();
+      const isVisible = await alertsPage.isTimerAlertButtonVisible();
+      expect(isVisible).toBe(true);
     });
 
     await test.step('Confirm Button - Accept', async () => {
@@ -73,15 +76,11 @@ test.describe('DemoQA Alerts Tests', () => {
       alertsPage.handleAlert('accept');
 
       await alertsPage.clickAlertButton();
-      // eslint-disable-next-line playwright/no-wait-for-timeout
-      await alertsPage.waitForTimeout(100);
+      await alertsPage.waitForAlertButtonAttached();
       await alertsPage.clickTimerAlertButton();
-      // eslint-disable-next-line playwright/no-wait-for-timeout
-      await alertsPage.waitForTimeout(100);
+      await alertsPage.waitForTimerAlertButtonAttached();
       await alertsPage.clickConfirmButton();
-
-      // eslint-disable-next-line playwright/no-wait-for-timeout
-      await alertsPage.waitForTimeout(1000);
+      await alertsPage.waitForConfirmResultAttached();
     });
   });
 });

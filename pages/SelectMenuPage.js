@@ -1,5 +1,5 @@
 const BasePage = require('./BasePage');
-const { TIMEOUTS, SELECTORS } = require('../utils/constants');
+const { TIMEOUTS } = require('../utils/constants');
 
 class SelectMenuPage extends BasePage {
   constructor(page) {
@@ -9,42 +9,36 @@ class SelectMenuPage extends BasePage {
       selectOne: '#selectOne',
       oldStyleSelect: '#oldSelectMenu',
       multiSelect: '#cars',
-      colorMultiSelect: '#selectMenuContainer .css-1pahdxg-control',
-      selectValueDropdown: '.css-1wa3eu0-placeholder',
-      selectOneDropdown: '.css-1wa3eu0-placeholder',
-      selectValueOption: '.css-26l3qy-menu',
-      selectOneOption: '.css-26l3qy-menu'
+      colorMultiSelect: '#selectMenuContainer > div',
+      multiSelectLabel: 'text=Multiselect drop down',
     };
   }
 
   async selectValueOption(group, option) {
     await this.clickElement(this.selectors.selectValue);
-    await this.waitForTimeout(TIMEOUTS.LONG);
     
-    await this.page.waitForSelector(SELECTORS.DROPDOWN_MENU, { timeout: TIMEOUTS.ELEMENT_WAIT });
-    const optionSelector = `${SELECTORS.DROPDOWN_MENU} div:has-text("${group}, option ${option}")`;
-    const optionExists = await this.page.locator(optionSelector).count() > 0;
-    if (!optionExists) {
-      throw new Error(`Option "${group}, option ${option}" not found in dropdown`);
+    const optionText = `${group}, option ${option}`;
+    const optionLocator = this.page.locator(`div[id*="react-select"][id*="-option"]:has-text("${optionText}")`).first();
+    
+    try {
+      await optionLocator.waitFor({ state: 'visible', timeout: TIMEOUTS.ELEMENT_WAIT });
+      await optionLocator.click();
+    } catch (error) {
+      throw new Error(`Option "${optionText}" not found in dropdown`);
     }
-    await this.clickElement(optionSelector);
   }
 
   async selectValueOptionAndWait(group, option) {
     const expectedText = `${group}, option ${option}`;
     
     await this.clickElement(this.selectors.selectValue);
-    await this.waitForTimeout(TIMEOUTS.LONG);
     
-    await this.page.waitForSelector(SELECTORS.DROPDOWN_MENU, { timeout: TIMEOUTS.ELEMENT_WAIT });
-    
-    const optionSelector = `${SELECTORS.DROPDOWN_MENU} div:has-text("${expectedText}")`;
-    await this.page.waitForSelector(optionSelector, { timeout: TIMEOUTS.ELEMENT_WAIT });
-    await this.clickElement(optionSelector);
-    
-    await this.waitForElementHidden(SELECTORS.DROPDOWN_MENU, TIMEOUTS.ELEMENT_WAIT);
+    const optionLocator = this.page.locator(`div[id*="react-select"][id*="-option"]:has-text("${expectedText}")`).first();
+    await optionLocator.waitFor({ state: 'visible', timeout: TIMEOUTS.ELEMENT_WAIT });
+    await optionLocator.click();
     
     await this.page.locator(this.selectors.selectValue).waitFor({ 
+      state: 'attached',
       hasText: expectedText, 
       timeout: TIMEOUTS.DEFAULT 
     });
@@ -52,10 +46,10 @@ class SelectMenuPage extends BasePage {
 
   async selectOneOption(option) {
     await this.clickElement(this.selectors.selectOne);
-    await this.waitForTimeout(TIMEOUTS.LONG);
     
-    await this.page.waitForSelector(SELECTORS.DROPDOWN_MENU, { timeout: TIMEOUTS.ELEMENT_WAIT });
-    await this.clickElement(`${SELECTORS.DROPDOWN_MENU} .css-yt9ioa-option:has-text("${option}")`);
+    const optionLocator = this.page.locator(`div[id*="react-select"][id*="-option"]:has-text("${option}")`).first();
+    await optionLocator.waitFor({ state: 'visible', timeout: TIMEOUTS.ELEMENT_WAIT });
+    await optionLocator.click();
   }
 
   async selectOldStyleOption(option) {
@@ -70,11 +64,13 @@ class SelectMenuPage extends BasePage {
   async selectColorMultiSelectOptions(options) {
     for (const option of options) {
       await this.page.click(this.selectors.colorMultiSelect);
-      await this.waitForTimeout(TIMEOUTS.LONG);
       
       const optionText = option.charAt(0).toUpperCase() + option.slice(1);
-      await this.page.click(`${SELECTORS.DROPDOWN_MENU} div:has-text("${optionText}")`);
-      await this.waitForTimeout(TIMEOUTS.MEDIUM);
+      const optionLocator = this.page.locator(`div[id*="react-select"][id*="-option"]:has-text("${optionText}")`).first();
+      await optionLocator.waitFor({ state: 'visible', timeout: TIMEOUTS.ELEMENT_WAIT });
+      await optionLocator.click();
+      
+      await optionLocator.waitFor({ state: 'hidden', timeout: TIMEOUTS.ELEMENT_WAIT }).catch(() => {});
     }
   }
 
@@ -86,18 +82,15 @@ class SelectMenuPage extends BasePage {
         return selectedOption.textContent.trim();
       }
       
-      const text = el.textContent || el.innerText || '';
+      const text = el.textContent || '';
       const lines = text.split('\n').filter(line => line.trim());
-      for (const line of lines) {
-        if (line.includes('option') && line.includes('selected')) {
-          const match = line.match(/([^,]+,\s*option\s+\d+)/);
-          if (match) {
-            return match[1].trim();
-          }
-        }
-      }
+      const optionLine = lines.find(line => 
+        line.trim() && 
+        !line.includes('results available') && 
+        !line.includes('Select is focused')
+      );
       
-      return lines.find(line => line.trim() && !line.includes('results available') && !line.includes('Select is focused')) || text;
+      return optionLine ? optionLine.trim() : text.trim();
     });
     
     return cleanText;
@@ -128,16 +121,16 @@ class SelectMenuPage extends BasePage {
     const results = {};
 
     await this.selectValueOption('Group 2', '1');
-    await this.waitForTimeout(TIMEOUTS.LONG);
+    await this.page.locator(this.selectors.selectValue).waitFor({ state: 'attached', timeout: TIMEOUTS.DEFAULT });
 
     await this.selectOneOption('Other');
-    await this.waitForTimeout(TIMEOUTS.LONG);
+    await this.page.locator(this.selectors.selectOne).waitFor({ state: 'attached', timeout: TIMEOUTS.DEFAULT });
 
     await this.selectOldStyleOption('green');
-    await this.waitForTimeout(TIMEOUTS.LONG);
+    await this.page.locator(this.selectors.oldStyleSelect).waitFor({ state: 'attached', timeout: TIMEOUTS.DEFAULT });
 
     await this.selectMultiSelectOptions(['volvo', 'saab']);
-    await this.waitForTimeout(TIMEOUTS.LONG);
+    await this.page.locator(this.selectors.multiSelect).waitFor({ state: 'attached', timeout: TIMEOUTS.DEFAULT });
 
     results.selections = await this.getSelectedValues();
 
@@ -189,35 +182,42 @@ class SelectMenuPage extends BasePage {
     return results;
   }
 
-  async validateSelections(expectedSelections) {
-    const actualSelections = await this.getSelectedValuesForValidation();
-    const validation = {};
-
-    for (const [key, expected] of Object.entries(expectedSelections)) {
-      validation[key] = {
-        expected,
-        actual: actualSelections[key],
-        matches: actualSelections[key] && actualSelections[key].includes(expected)
-      };
-    }
-
-    return validation;
+  async isSelectValueVisible() {
+    return await this.isElementVisible(this.selectors.selectValue);
   }
 
-  async validateSelectionsClean(expectedSelections) {
-    const actualSelections = await this.getSelectedValuesClean();
-    const validation = {};
-
-    for (const [key, expected] of Object.entries(expectedSelections)) {
-      validation[key] = {
-        expected,
-        actual: actualSelections[key],
-        matches: actualSelections[key] && actualSelections[key].includes(expected)
-      };
-    }
-
-    return validation;
+  async isSelectOneVisible() {
+    return await this.isElementVisible(this.selectors.selectOne);
   }
+
+  async isOldStyleSelectVisible() {
+    return await this.isElementVisible(this.selectors.oldStyleSelect);
+  }
+
+  async isMultiSelectVisible() {
+    return await this.isElementVisible(this.selectors.multiSelect);
+  }
+
+  async isMultiSelectLabelVisible() {
+    const label = this.page.locator(this.selectors.multiSelectLabel);
+    try {
+      await label.waitFor({ state: 'visible', timeout: TIMEOUTS.DEFAULT });
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  async checkAllSelectElementsPresent() {
+    return {
+      selectValue: await this.isSelectValueVisible(),
+      selectOne: await this.isSelectOneVisible(),
+      oldStyleSelect: await this.isOldStyleSelectVisible(),
+      multiSelect: await this.isMultiSelectVisible(),
+      multiSelectLabel: await this.isMultiSelectLabelVisible(),
+    };
+  }
+
 }
 
 module.exports = SelectMenuPage;

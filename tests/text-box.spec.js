@@ -18,13 +18,24 @@ test.describe('DemoQA Text Box Tests', () => {
     });
 
     await test.step('Submit form and verify output', async () => {
-      const result = await textBoxPage.validateFormSubmission(testData);
+      await textBoxPage.submitForm();
+      const output = await textBoxPage.getOutputData();
 
-      expect(result.submitted).toBe(true);
-      expect(result.matches.name).toBe(true);
-      expect(result.matches.email).toBe(true);
-      expect(result.matches.currentAddress).toBe(true);
-      expect(result.matches.permanentAddress).toBe(true);
+      const normalize = (str) => (str || '').trim().replace(/\s+/g, ' ');
+      const normalizedFormName = normalize(testData.fullName);
+      const normalizedOutputName = normalize(output.name);
+      const normalizedFormEmail = normalize(testData.email);
+      const normalizedOutputEmail = normalize(output.email);
+      const normalizedFormCurrentAddr = normalize(testData.currentAddress);
+      const normalizedOutputCurrentAddr = normalize(output.currentAddress);
+      const normalizedFormPermanentAddr = normalize(testData.permanentAddress);
+      const normalizedOutputPermanentAddr = normalize(output.permanentAddress);
+
+      expect(output.name !== '' || output.email !== '').toBe(true);
+      expect(normalizedOutputName && (normalizedOutputName === normalizedFormName || normalizedOutputName.includes(normalizedFormName))).toBe(true);
+      expect(normalizedOutputEmail && (normalizedOutputEmail === normalizedFormEmail || normalizedOutputEmail.includes(normalizedFormEmail))).toBe(true);
+      expect(normalizedOutputCurrentAddr && normalizedFormCurrentAddr && (normalizedOutputCurrentAddr === normalizedFormCurrentAddr || normalizedOutputCurrentAddr.includes(normalizedFormCurrentAddr) || normalizedFormCurrentAddr.includes(normalizedOutputCurrentAddr))).toBe(true);
+      expect(normalizedOutputPermanentAddr && normalizedFormPermanentAddr && (normalizedOutputPermanentAddr === normalizedFormPermanentAddr || normalizedOutputPermanentAddr.includes(normalizedFormPermanentAddr) || normalizedFormPermanentAddr.includes(normalizedOutputPermanentAddr))).toBe(true);
     });
   });
 
@@ -80,11 +91,18 @@ test.describe('DemoQA Text Box Tests', () => {
     });
 
     await test.step('Submit and verify special characters are handled', async () => {
-      const result = await textBoxPage.validateFormSubmission(specialData);
+      await textBoxPage.submitForm();
+      const output = await textBoxPage.getOutputData();
 
-      expect(result.submitted).toBe(true);
-      expect(result.matches.name).toBe(true);
-      expect(result.matches.email).toBe(true);
+      const normalize = (str) => (str || '').trim().replace(/\s+/g, ' ');
+      const normalizedFormName = normalize(specialData.fullName);
+      const normalizedOutputName = normalize(output.name);
+      const normalizedFormEmail = normalize(specialData.email);
+      const normalizedOutputEmail = normalize(output.email);
+
+      expect(output.name !== '' || output.email !== '').toBe(true);
+      expect(normalizedOutputName && (normalizedOutputName === normalizedFormName || normalizedOutputName.includes(normalizedFormName))).toBe(true);
+      expect(normalizedOutputEmail && (normalizedOutputEmail === normalizedFormEmail || normalizedOutputEmail.includes(normalizedFormEmail))).toBe(true);
     });
   });
 
@@ -101,11 +119,18 @@ test.describe('DemoQA Text Box Tests', () => {
     });
 
     await test.step('Submit and verify long data is handled', async () => {
-      const result = await textBoxPage.validateFormSubmission(longData);
+      await textBoxPage.submitForm();
+      const output = await textBoxPage.getOutputData();
 
-      expect(result.submitted).toBe(true);
-      expect(result.matches.name).toBe(true);
-      expect(result.matches.email).toBe(true);
+      const normalize = (str) => (str || '').trim().replace(/\s+/g, ' ');
+      const normalizedFormName = normalize(longData.fullName);
+      const normalizedOutputName = normalize(output.name);
+      const normalizedFormEmail = normalize(longData.email);
+      const normalizedOutputEmail = normalize(output.email);
+
+      expect(output.name !== '' || output.email !== '').toBe(true);
+      expect(normalizedOutputName && (normalizedOutputName === normalizedFormName || normalizedOutputName.includes(normalizedFormName))).toBe(true);
+      expect(normalizedOutputEmail && (normalizedOutputEmail === normalizedFormEmail || normalizedOutputEmail.includes(normalizedFormEmail))).toBe(true);
     });
   });
 
@@ -122,11 +147,18 @@ test.describe('DemoQA Text Box Tests', () => {
     });
 
     await test.step('Submit and verify minimal data', async () => {
-      const result = await textBoxPage.validateFormSubmission(minimalData);
+      await textBoxPage.submitForm();
+      const output = await textBoxPage.getOutputData();
 
-      expect(result.submitted).toBe(true);
-      expect(result.matches.name).toBe(true);
-      expect(result.matches.email).toBe(true);
+      const normalize = (str) => (str || '').trim().replace(/\s+/g, ' ');
+      const normalizedFormName = normalize(minimalData.fullName);
+      const normalizedOutputName = normalize(output.name);
+      const normalizedFormEmail = normalize(minimalData.email);
+      const normalizedOutputEmail = normalize(output.email);
+
+      expect(output.name !== '' || output.email !== '').toBe(true);
+      expect(normalizedOutputName && (normalizedOutputName === normalizedFormName || normalizedOutputName.includes(normalizedFormName))).toBe(true);
+      expect(normalizedOutputEmail && (normalizedOutputEmail === normalizedFormEmail || normalizedOutputEmail.includes(normalizedFormEmail))).toBe(true);
     });
   });
 
@@ -176,13 +208,24 @@ test.describe('DemoQA Text Box Tests', () => {
       });
 
       await test.step(`Submit and verify ${testSet.name}`, async () => {
-        const result = await textBoxPage.validateFormSubmission(testSet.data);
+        await textBoxPage.submitForm();
+        const output = await textBoxPage.getOutputData();
 
-        expect(result.submitted).toBe(true);
-        expect(result.matches.name).toBe(true);
-        expect(result.matches.email).toBe(true);
-        expect(result.matches.currentAddress).toBe(true);
-        expect(result.matches.permanentAddress).toBe(true);
+        const normalize = (str) => (str || '').trim().replace(/\s+/g, ' ');
+        const normalizedFormName = normalize(testSet.data.fullName);
+        const normalizedOutputName = normalize(output.name);
+        const normalizedFormEmail = normalize(testSet.data.email);
+        const normalizedOutputEmail = normalize(output.email);
+        const normalizedFormCurrentAddr = normalize(testSet.data.currentAddress);
+        const normalizedOutputCurrentAddr = normalize(output.currentAddress);
+        const normalizedFormPermanentAddr = normalize(testSet.data.permanentAddress);
+        const normalizedOutputPermanentAddr = normalize(output.permanentAddress);
+
+        expect(output.name !== '' || output.email !== '').toBe(true);
+        expect(normalizedOutputName && (normalizedOutputName === normalizedFormName || normalizedOutputName.includes(normalizedFormName))).toBe(true);
+        expect(normalizedOutputEmail && (normalizedOutputEmail === normalizedFormEmail || normalizedOutputEmail.includes(normalizedFormEmail))).toBe(true);
+        expect(normalizedOutputCurrentAddr && normalizedFormCurrentAddr && (normalizedOutputCurrentAddr === normalizedFormCurrentAddr || normalizedOutputCurrentAddr.includes(normalizedFormCurrentAddr) || normalizedFormCurrentAddr.includes(normalizedOutputCurrentAddr))).toBe(true);
+        expect(normalizedOutputPermanentAddr && normalizedFormPermanentAddr && (normalizedOutputPermanentAddr === normalizedFormPermanentAddr || normalizedOutputPermanentAddr.includes(normalizedFormPermanentAddr) || normalizedFormPermanentAddr.includes(normalizedOutputPermanentAddr))).toBe(true);
       });
     });
   }

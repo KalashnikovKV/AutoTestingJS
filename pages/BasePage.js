@@ -76,16 +76,11 @@ class BasePage {
     if (!value) return;
 
     try {
-      await this.page.click(selector, { clickCount: 3 });
-      await this.page.keyboard.press('Backspace');
       await this.page.fill(selector, value);
-      await this.page.keyboard.press('Tab');
     } catch (error) {
       try {
         await this.page.click(selector);
-        await this.page.keyboard.press('Control+a');
-        await this.page.keyboard.press('Delete');
-        await this.page.keyboard.type(value);
+        await this.page.fill(selector, value);
       } catch (error2) {
         throw new Error(`Failed to fill field ${selector}: ${error2.message}`);
       }
@@ -109,7 +104,8 @@ class BasePage {
     try {
       await this.page.waitForSelector(selector, { state: 'visible', timeout });
       return true;
-    } catch {
+    } catch (error) {
+      console.log(`Element not visible: ${selector}`, error.message);
       return false;
     }
   }

@@ -30,6 +30,26 @@ class AlertsPage extends BasePage {
     await this.clickElement(this.selectors.promptButton);
   }
 
+  async isAlertButtonVisible() {
+    return await this.isElementVisible(this.selectors.alertButton);
+  }
+
+  async isTimerAlertButtonVisible() {
+    return await this.isElementVisible(this.selectors.timerAlertButton);
+  }
+
+  async waitForAlertButtonAttached(timeout = 200) {
+    await this.page.locator(this.selectors.alertButton).waitFor({ state: 'attached', timeout });
+  }
+
+  async waitForTimerAlertButtonAttached(timeout = 200) {
+    await this.page.locator(this.selectors.timerAlertButton).waitFor({ state: 'attached', timeout });
+  }
+
+  async waitForConfirmResultAttached(timeout = TIMEOUTS.DEFAULT) {
+    await this.page.locator(this.selectors.confirmResult).waitFor({ state: 'attached', timeout });
+  }
+
   async getConfirmResult() {
     return await this.getText(this.selectors.confirmResult);
   }
@@ -90,35 +110,35 @@ class AlertsPage extends BasePage {
     const alertPromise1 = this.handleAlert('accept');
     await this.clickAlertButton();
     await alertPromise1;
-    await this.waitForTimeout(TIMEOUTS.SHORT);
+    await this.page.locator(this.selectors.alertButton).waitFor({ state: 'attached', timeout: TIMEOUTS.ELEMENT_WAIT });
 
     const alertPromise2 = this.handleAlert('accept');
     await this.clickTimerAlertButton();
     await alertPromise2;
-    await this.waitForTimeout(TIMEOUTS.ALERT_TIMER);
+    await this.page.locator(this.selectors.timerAlertButton).waitFor({ state: 'attached', timeout: TIMEOUTS.ALERT_TIMER });
 
     const alertPromise3 = this.handleAlert('accept');
     await this.clickConfirmButton();
     await alertPromise3;
-    await this.waitForTimeout(TIMEOUTS.SHORT);
+    await this.page.locator(this.selectors.confirmResult).waitFor({ state: 'attached', timeout: TIMEOUTS.ELEMENT_WAIT });
     results.confirmAccept = await this.getConfirmResult();
 
     const alertPromise4 = this.handleAlert('dismiss');
     await this.clickConfirmButton();
     await alertPromise4;
-    await this.waitForTimeout(TIMEOUTS.SHORT);
+    await this.page.locator(this.selectors.confirmResult).waitFor({ state: 'attached', timeout: TIMEOUTS.ELEMENT_WAIT });
     results.confirmDismiss = await this.getConfirmResult();
 
     const alertPromise5 = this.handleAlert('accept', 'Test Prompt Text');
     await this.clickPromptButton();
     await alertPromise5;
-    await this.waitForTimeout(TIMEOUTS.LONG);
+    await this.page.locator(this.selectors.promptResult).waitFor({ state: 'attached', timeout: TIMEOUTS.ELEMENT_WAIT });
     results.promptAccept = await this.getPromptResult();
 
     const alertPromise6 = this.handleAlert('dismiss');
     await this.clickPromptButton();
     await alertPromise6;
-    await this.waitForTimeout(TIMEOUTS.MEDIUM);
+    await this.page.waitForTimeout(500);
     results.promptDismiss = await this.getPromptResult();
 
     return results;

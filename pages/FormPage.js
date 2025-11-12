@@ -25,11 +25,13 @@ class FormPage extends BasePage {
     };
   }
 
-  async fillForm(formData) {
+  async closeModalIfVisible() {
     if (await this.checkElementVisibleNow(SELECTORS.MODAL)) {
       await this.closeModal();
     }
+  }
 
+  async fillBasicFields(formData) {
     if (formData.firstName) {
       await this.fillField(this.selectors.firstName, formData.firstName);
     }
@@ -48,91 +50,109 @@ class FormPage extends BasePage {
         formData.currentAddress
       );
     }
+  }
 
-    if (formData.gender) {
-      const genderMap = { Male: '1', Female: '2', Other: '3' };
-      const genderId = genderMap[formData.gender];
-      await this.clickElement(
-        `#genterWrapper label[for="gender-radio-${genderId}"]`
-      );
-    }
+  async selectGender(gender) {
+    if (!gender) return;
+    
+    const genderMap = { Male: '1', Female: '2', Other: '3' };
+    const genderId = genderMap[gender];
+    await this.clickElement(
+      `#genterWrapper label[for="gender-radio-${genderId}"]`
+    );
+  }
 
-    if (formData.hobbies && formData.hobbies.length > 0) {
-      for (const hobby of formData.hobbies) {
-        try {
-          if (await this.checkElementVisibleNow(SELECTORS.MODAL)) {
-            await this.closeModal();
-            await this.waitForTimeout(TIMEOUTS.LONG);
-          }
+  async selectHobbies(hobbies) {
+    if (!hobbies || hobbies.length === 0) return;
 
-          const hobbyId =
-            hobby === 'Sports' ? '1' : hobby === 'Reading' ? '2' : '3';
-          const hobbySelector = `#hobbiesWrapper label[for="hobbies-checkbox-${hobbyId}"]`;
-
-          await this.scrollToElement(hobbySelector);
-          await this.waitForTimeout(TIMEOUTS.MEDIUM);
-
-          await this.clickElement(hobbySelector, { force: true });
-        } catch (error) {
-          console.log(`Failed to select hobby ${hobby}:`, error.message);
+    for (const hobby of hobbies) {
+      try {
+        if (await this.checkElementVisibleNow(SELECTORS.MODAL)) {
+          await this.closeModal();
+          await this.page.locator(SELECTORS.MODAL).waitFor({ state: 'hidden', timeout: TIMEOUTS.ELEMENT_WAIT });
         }
-      }
-    }
 
-    if (formData.picture) {
-      try {
-        await this.page.setInputFiles(this.selectors.picture, formData.picture);
+        const hobbyId =
+          hobby === 'Sports' ? '1' : hobby === 'Reading' ? '2' : '3';
+        const hobbySelector = `#hobbiesWrapper label[for="hobbies-checkbox-${hobbyId}"]`;
+
+        await this.scrollToElement(hobbySelector);
+        const hobbyLocator = this.page.locator(hobbySelector);
+        await hobbyLocator.waitFor({ state: 'visible', timeout: TIMEOUTS.ELEMENT_WAIT });
+
+        await this.clickElement(hobbySelector, { force: true });
       } catch (error) {
-        console.log('File upload error:', error.message);
+        console.log(`Failed to select hobby ${hobby}:`, error.message);
       }
     }
+  }
 
-    if (formData.state && formData.state.trim()) {
-      try {
-        await this.clickElement(this.selectors.state, { force: true });
-        await this.waitForTimeout(TIMEOUTS.LONG);
+  async uploadPicture(picturePath) {
+    if (!picturePath) return;
 
-        await this.page.keyboard.type(formData.state);
-        await this.waitForTimeout(TIMEOUTS.MEDIUM);
-        await this.page.keyboard.press('Enter');
-      } catch (error) {
-        console.log(`State selection error: ${formData.state}`, error.message);
-      }
+    try {
+      await this.page.setInputFiles(this.selectors.picture, picturePath);
+    } catch (error) {
+      console.log('File upload error:', error.message);
     }
+  }
 
-    if (formData.city && formData.city.trim()) {
-      try {
-        await this.clickElement(this.selectors.city, { force: true });
-        await this.waitForTimeout(TIMEOUTS.LONG);
+  async selectState(state) {
+    if (!state || !state.trim()) return;
 
-        await this.page.keyboard.type(formData.city);
-        await this.waitForTimeout(TIMEOUTS.MEDIUM);
-        await this.page.keyboard.press('Enter');
-      } catch (error) {
-        console.log(`City selection error: ${formData.city}`, error.message);
-      }
+    try {
+      await this.clickElement(this.selectors.state, { force: true });
+      await this.page.waitForTimeout(500);
+      await this.page.keyboard.type(state);
+      await this.page.waitForTimeout(300);
+      await this.page.keyboard.press('Enter');
+      await this.page.waitForTimeout(300);
+    } catch (error) {
+      console.log(`State selection error: ${state}`, error.message);
     }
+  }
+
+  async selectCity(city) {
+    if (!city || !city.trim()) return;
+
+    try {
+      await this.clickElement(this.selectors.city, { force: true });
+      await this.page.waitForTimeout(500);
+      await this.page.keyboard.type(city);
+      await this.page.waitForTimeout(300);
+      await this.page.keyboard.press('Enter');
+      await this.page.waitForTimeout(300);
+    } catch (error) {
+      console.log(`City selection error: ${city}`, error.message);
+    }
+  }
+
+  async fillForm(formData) {
+    await this.closeModalIfVisible();
+    await this.fillBasicFields(formData);
+    await this.selectGender(formData.gender);
+    await this.selectHobbies(formData.hobbies);
+    await this.uploadPicture(formData.picture);
+    await this.selectState(formData.state);
+    await this.selectCity(formData.city);
   }
 
   async submitForm() {
     try {
       if (await this.checkElementVisibleNow(SELECTORS.MODAL)) {
         await this.closeModal();
-        await this.waitForTimeout(TIMEOUTS.LONG);
+        await this.page.locator(SELECTORS.MODAL).waitFor({ state: 'hidden', timeout: TIMEOUTS.ELEMENT_WAIT });
       }
 
       try {
         await this.scrollToElement(this.selectors.submitButton);
-        await this.waitForTimeout(TIMEOUTS.MEDIUM);
       } catch (error) {
         console.log('Submit button scroll error:', error.message);
       }
 
       try {
         const submitButton = this.page.locator(this.selectors.submitButton);
-        await submitButton
-          .waitFor({ state: 'visible', timeout: TIMEOUTS.DEFAULT })
-          .catch(() => {});
+        await submitButton.waitFor({ state: 'visible', timeout: TIMEOUTS.DEFAULT });
         await submitButton.click({ timeout: TIMEOUTS.DEFAULT });
       } catch (error) {
         try {
@@ -214,29 +234,6 @@ class FormPage extends BasePage {
     }
   }
 
-  async validateFormSubmission() {
-    await this.submitForm();
-
-    try {
-      const modalTitle = await this.getModalTitle();
-      const results = await this.getFormResults();
-
-      return {
-        modalTitle,
-        results,
-        isValid: modalTitle === 'Thanks for submitting the form',
-      };
-    } catch {
-      const errors = await this.checkValidationErrors();
-
-      return {
-        modalTitle: '',
-        results: {},
-        isValid: false,
-        errors: errors,
-      };
-    }
-  }
 
   async checkValidationErrors() {
     const errors = [];
@@ -285,6 +282,19 @@ class FormPage extends BasePage {
     }
 
     return errors;
+  }
+
+  async hasRequiredAttribute(selector) {
+    const element = this.page.locator(selector);
+    return await element.evaluate(el => el.hasAttribute('required'));
+  }
+
+  async checkRequiredFields() {
+    return {
+      firstName: await this.hasRequiredAttribute(this.selectors.firstName),
+      lastName: await this.hasRequiredAttribute(this.selectors.lastName),
+      mobile: await this.hasRequiredAttribute(this.selectors.mobile),
+    };
   }
 }
 

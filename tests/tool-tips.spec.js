@@ -106,6 +106,7 @@ test.describe('DemoQA Tool Tips Tests', () => {
       await toolTipsPage.hoverOverLink();
       await new Promise((resolve) => setTimeout(resolve, 100));
       await toolTipsPage.hoverOverContraryLink();
+      await new Promise((resolve) => setTimeout(resolve, 500));
 
       const tooltipText = await toolTipsPage.getTooltipText();
       expect(tooltipText).toContain('You hovered over the 1.10.32');

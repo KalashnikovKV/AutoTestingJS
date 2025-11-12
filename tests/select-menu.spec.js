@@ -62,12 +62,12 @@ test.describe('DemoQA Select Menu Tests', () => {
     });
 
     await test.step('Validate all selections', async () => {
-      const validation = await selectMenuPage.validateSelections(expectedSelections);
+      const actualSelections = await selectMenuPage.getSelectedValuesForValidation();
       
-      expect(validation.selectValue.matches).toBe(true);
-      expect(validation.selectOne.matches).toBe(true);
-      expect(validation.oldStyleSelect.matches).toBe(true);
-      expect(validation.multiSelect.matches).toBe(true);
+      expect(actualSelections.selectValue).toContain(expectedSelections.selectValue);
+      expect(actualSelections.selectOne).toContain(expectedSelections.selectOne);
+      expect(actualSelections.oldStyleSelect).toContain(expectedSelections.oldStyleSelect);
+      expect(actualSelections.multiSelect).toContain(expectedSelections.multiSelect);
     });
   });
 
@@ -75,7 +75,7 @@ test.describe('DemoQA Select Menu Tests', () => {
     await test.step('Different Select Value options', async () => {
       await selectMenuPage.selectValueOptionAndWait('Group 1', '2');
       const selections = await selectMenuPage.getSelectedValuesClean();
-      expect(selections.selectValue).toContain('Group 2, option 1');
+      expect(selections.selectValue).toContain('Group 1, option 2');
     });
 
     await test.step('Different Select One options', async () => {
@@ -123,7 +123,7 @@ test.describe('DemoQA Select Menu Tests', () => {
         await selectMenuPage.selectValueOption('Non-existent Group', '1');
       } catch (error) {
         errorCaught = true;
-        expect(error.message).toContain('not found');
+        expect(error.message).toContain('not found in dropdown');
       }
       expect(errorCaught).toBe(true);
     });
@@ -144,15 +144,13 @@ test.describe('DemoQA Select Menu Tests', () => {
 
   test('All 5 select elements are present', async () => {
     await test.step('Verify all 5 select elements exist on page', async () => {
-      await expect(selectMenuPage.page.locator('#withOptGroup')).toBeVisible();
+      const elements = await selectMenuPage.checkAllSelectElementsPresent();
       
-      await expect(selectMenuPage.page.locator('#selectOne')).toBeVisible();
-      
-      await expect(selectMenuPage.page.locator('#oldSelectMenu')).toBeVisible();
-      
-      await expect(selectMenuPage.page.locator('#cars')).toBeVisible();
-      
-      await expect(selectMenuPage.page.locator('text=Multiselect drop down')).toBeVisible();
+      expect(elements.selectValue).toBe(true);
+      expect(elements.selectOne).toBe(true);
+      expect(elements.oldStyleSelect).toBe(true);
+      expect(elements.multiSelect).toBe(true);
+      expect(elements.multiSelectLabel).toBe(true);
     });
   });
 });

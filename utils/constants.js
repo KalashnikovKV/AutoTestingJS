@@ -10,7 +10,6 @@ module.exports = {
   },
 
   SELECTORS: {
-    DROPDOWN_MENU: '.css-26l3qy-menu',
     MODAL: '.modal',
     TOOLTIP: '.tooltip-inner',
   },
