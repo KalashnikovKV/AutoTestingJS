@@ -67,7 +67,6 @@ class TextBoxPage extends BasePage {
   async parseOutputWithoutLineBreaks(outputText) {
     const data = {};
 
-    // Name parsing - более гибкий с несколькими паттернами
     const namePatterns = [
       /Name:\s*([^E]*?)(?=Email:|$)/,
       /Name:\s*([^\n]+)/,
@@ -81,7 +80,6 @@ class TextBoxPage extends BasePage {
       }
     }
 
-    // Email parsing - более гибкий с несколькими паттернами
     const emailPatterns = [
       /Email:\s*([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/,
       /Email:\s*([^C]*?)(?=Current Address|$)/,
@@ -95,7 +93,6 @@ class TextBoxPage extends BasePage {
       }
     }
 
-    // Current Address parsing - более гибкий
     const currentAddressPatterns = [
       /Current Address\s*:\s*(.+?)(?=\s*(?:Permanent|Permananet)\s+Address|$)/,
       /Current Address\s*:\s*(.+?)(?=Permanent|Permananet|$)/,
@@ -113,7 +110,6 @@ class TextBoxPage extends BasePage {
       }
     }
 
-    // Permanent Address parsing - более гибкий
     const permanentAddressPatterns = [
       /(?:Permanent|Permananet)\s+Address\s*:\s*(.*?)$/,
       /(?:Permanent|Permananet)\s+Address\s*:\s*(.+)/,

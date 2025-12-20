@@ -47,7 +47,6 @@ class ToolTipsPage extends BasePage {
       try {
         await tooltip.waitFor({ state: 'hidden', timeout: 500 }).catch(() => {});
       } catch {
-        // Tooltip already hidden
       }
     }
   }

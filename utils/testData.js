@@ -79,6 +79,15 @@ class TestDataGenerator {
       city: ''
     };
   }
+
+  static generateApiUserCredentials() {
+    const timestamp = Date.now();
+    const randomString = faker.string.alphanumeric(8);
+    return {
+      userName: `user_${randomString}_${timestamp}`,
+      password: `Password123!${randomString}`,
+    };
+  }
 }
 
 module.exports = TestDataGenerator;

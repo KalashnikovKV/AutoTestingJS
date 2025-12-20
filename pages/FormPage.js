@@ -82,7 +82,6 @@ class FormPage extends BasePage {
 
         await this.clickElement(hobbySelector, { force: true });
       } catch (error) {
-        // eslint-disable-next-line no-console
         console.log(`Failed to select hobby ${hobby}:`, error.message);
       }
     }
@@ -94,7 +93,6 @@ class FormPage extends BasePage {
     try {
       await this.page.setInputFiles(this.selectors.picture, picturePath);
     } catch (error) {
-      // eslint-disable-next-line no-console
       console.log('File upload error:', error.message);
     }
   }
@@ -110,7 +108,6 @@ class FormPage extends BasePage {
       await this.page.keyboard.press('Enter');
       await this.page.locator(this.selectors.state).waitFor({ state: 'attached' }).catch(() => {});
     } catch (error) {
-      // eslint-disable-next-line no-console
       console.log(`State selection error: ${state}`, error.message);
     }
   }
@@ -126,7 +123,6 @@ class FormPage extends BasePage {
       await this.page.keyboard.press('Enter');
       await this.page.locator(this.selectors.city).waitFor({ state: 'attached' }).catch(() => {});
     } catch (error) {
-      // eslint-disable-next-line no-console
       console.log(`City selection error: ${city}`, error.message);
     }
   }
@@ -151,7 +147,6 @@ class FormPage extends BasePage {
       try {
         await this.scrollToElement(this.selectors.submitButton);
       } catch (error) {
-        // eslint-disable-next-line no-console
         console.log('Submit button scroll error:', error.message);
       }
 
@@ -200,7 +195,6 @@ class FormPage extends BasePage {
           return title.trim();
         }
       } catch (error) {
-        // eslint-disable-next-line no-console
         console.log(`Modal title selector error: ${selector}`, error.message);
       }
     }
@@ -236,7 +230,6 @@ class FormPage extends BasePage {
         await this.page.keyboard.press('Escape');
       }
     } catch (error) {
-      // eslint-disable-next-line no-console
       console.log('Modal close error:', error.message);
     }
   }
@@ -269,12 +262,10 @@ class FormPage extends BasePage {
               }
             }
           } catch (error) {
-            // eslint-disable-next-line no-console
             console.log('Element visibility check error:', error.message);
           }
         }
       } catch (error) {
-        // eslint-disable-next-line no-console
         console.log(`Error selector check: ${selector}`, error.message);
       }
     }
