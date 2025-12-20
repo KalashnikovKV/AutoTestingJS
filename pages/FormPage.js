@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const BasePage = require('./BasePage');
 const { TIMEOUTS, SELECTORS } = require('../utils/constants');
 
@@ -80,8 +81,9 @@ class FormPage extends BasePage {
         const hobbyLocator = this.page.locator(hobbySelector);
         await hobbyLocator.waitFor({ state: 'visible', timeout: TIMEOUTS.ELEMENT_WAIT });
 
-        await this.clickElement(hobbySelector, { force: true });
+        await this.clickElement(hobbySelector);
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.log(`Failed to select hobby ${hobby}:`, error.message);
       }
     }

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const { request } = require('@playwright/test');
 
 class ApiClient {
@@ -143,6 +144,7 @@ class ApiClient {
         }
       }
     } catch (error) {
+      // Ignore response parsing errors
     }
 
     if (statusCode === 200) {
@@ -255,20 +257,14 @@ class ApiClient {
           const statusCode = response.status();
           
           let responseText = '';
-          let responseData = {};
           
           try {
             responseText = await response.text();
-            if (responseText && responseText.trim()) {
-              try {
-                responseData = JSON.parse(responseText);
-              } catch (parseError) {
-                responseData = { rawResponse: responseText };
-              }
-            }
           } catch (textError) {
+            // Ignore text extraction errors
           }
           
+          // eslint-disable-next-line no-console
           console.log(`DELETE ${variant.name} - Status: ${statusCode}, Response: ${responseText.substring(0, 200) || '(empty)'}`);
           
           if (statusCode === 204 || statusCode === 200) {
@@ -280,6 +276,7 @@ class ApiClient {
           }
           
           if (statusCode === 502 && attempt < maxRetries) {
+            // eslint-disable-next-line no-console
             console.log(`Got 502 Bad Gateway, retrying in ${attempt * 1000}ms...`);
             await new Promise(resolve => setTimeout(resolve, attempt * 1000));
             continue;
@@ -290,6 +287,7 @@ class ApiClient {
           }
           
         } catch (error) {
+          // eslint-disable-next-line no-console
           console.error(`Error in DELETE ${variant.name} (attempt ${attempt}):`, error.message);
           
           if (attempt < maxRetries) {

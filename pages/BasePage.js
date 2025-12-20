@@ -63,11 +63,7 @@ class BasePage {
     try {
       await this.page.click(selector, options);
     } catch (error) {
-      if (!options.force) {
-        await this.page.click(selector, { ...options, force: true });
-      } else {
-        throw error;
-      }
+      await this.page.locator(selector).click({ timeout: options.timeout || TIMEOUTS.DEFAULT });
     }
   }
 
@@ -104,6 +100,7 @@ class BasePage {
       await this.page.waitForSelector(selector, { state: 'visible', timeout });
       return true;
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.log(`Element not visible: ${selector}`, error.message);
       return false;
     }
@@ -122,6 +119,7 @@ class BasePage {
     try {
       await this.page.locator(selector).scrollIntoViewIfNeeded();
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.log('Scroll error:', error.message);
     }
   }

@@ -28,15 +28,14 @@ class ProfilePage extends BasePage {
   async clickProfileLink() {
     await this.waitForElementVisible(this.selectors.profileLink);
     await this.clickElement(this.selectors.profileLink);
-    await this.page.waitForLoadState('networkidle');
+    await this.page.waitForLoadState('domcontentloaded');
   }
 
   async getBooksFromTable() {
     try {
       await this.page.waitForSelector(this.selectors.booksTable, { timeout: 10000 });
-      await this.page.waitForLoadState('networkidle', { timeout: 10000 });
-      
-      await this.page.waitForTimeout(2000);
+      await this.page.waitForLoadState('domcontentloaded', { timeout: 10000 });
+      await this.page.waitForSelector(this.selectors.bookRow, { timeout: 2000 }).catch(() => {});
     } catch (error) {
       if (error.message.includes('closed') || error.message.includes('Target')) {
         throw error;
@@ -46,11 +45,7 @@ class ProfilePage extends BasePage {
     
     const books = [];
     
-    try {
-      await this.page.waitForSelector(`${this.selectors.bookRow} ${this.selectors.bookTitle}`, { timeout: 5000, state: 'visible' }).catch(() => {
-      });
-    } catch (error) {
-    }
+    await this.page.waitForSelector(`${this.selectors.bookRow} ${this.selectors.bookTitle}`, { timeout: 5000, state: 'visible' }).catch(() => {});
     
     const bookRows = await this.page.locator(this.selectors.bookRow).all();
     
@@ -152,19 +147,19 @@ class ProfilePage extends BasePage {
               
               await this.confirmDelete();
               
-              try {
-                await this.page.waitForLoadState('networkidle', { timeout: 3000 });
-              } catch (error) {
-              }
+              await this.page.waitForLoadState('domcontentloaded', { timeout: 3000 }).catch(() => {});
               
+              // eslint-disable-next-line no-console
               console.log(`Successfully clicked delete button for book "${title.trim()}"`);
               return;
             } else {
+              // eslint-disable-next-line no-console
               console.warn(`Delete button not found for book "${title.trim()}"`);
             }
           }
         }
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.warn(`Error processing row: ${error.message}`);
         continue;
       }
@@ -176,16 +171,13 @@ class ProfilePage extends BasePage {
   async confirmDelete() {
     await this.waitForElementVisible(this.selectors.confirmDeleteButton, 3000);
     await this.clickElement(this.selectors.confirmDeleteButton);
-    await this.page.waitForTimeout(500);
+    await this.page.waitForSelector(this.selectors.confirmDeleteButton, { state: 'hidden', timeout: 500 }).catch(() => {});
   }
 
   async isCollectionEmpty() {
-    try {
-      const noDataMessage = await this.page.locator(this.selectors.noDataMessage).isVisible({ timeout: 2000 });
-      if (noDataMessage) {
-        return true;
-      }
-    } catch (error) {
+    const noDataMessage = await this.page.locator(this.selectors.noDataMessage).isVisible({ timeout: 2000 }).catch(() => false);
+    if (noDataMessage) {
+      return true;
     }
     
     const booksCount = await this.getBooksCount();
@@ -194,12 +186,12 @@ class ProfilePage extends BasePage {
 
   async refresh() {
     try {
-      await this.page.reload({ waitUntil: 'networkidle', timeout: 15000 });
+      await this.page.reload({ waitUntil: 'domcontentloaded', timeout: 15000 });
       try {
         await this.page.waitForSelector(this.selectors.booksTable, { timeout: 5000 });
-        await this.page.waitForTimeout(2000);
+        await this.page.waitForSelector(this.selectors.bookRow, { timeout: 2000 }).catch(() => {});
       } catch (error) {
-        await this.page.waitForTimeout(2000);
+        await this.page.waitForSelector(this.selectors.bookRow, { timeout: 2000 }).catch(() => {});
       }
     } catch (error) {
       if (error.message.includes('closed') || error.message.includes('Target')) {
@@ -209,18 +201,14 @@ class ProfilePage extends BasePage {
   }
 
   async forceRefreshData() {
-    try {
-      await this.page.evaluate(() => {
-        const refreshButtons = document.querySelectorAll('[aria-label*="refresh" i], [title*="refresh" i], button:has-text("Refresh")');
-        if (refreshButtons.length > 0) {
-          refreshButtons[0].click();
-        }
-      }).catch(() => {
-      });
-      
-      await this.page.waitForTimeout(2000);
-    } catch (error) {
-    }
+    await this.page.evaluate(() => {
+      const refreshButtons = document.querySelectorAll('[aria-label*="refresh" i], [title*="refresh" i], button:has-text("Refresh")');
+      if (refreshButtons.length > 0) {
+        refreshButtons[0].click();
+      }
+    }).catch(() => {});
+    
+    await this.page.waitForSelector(this.selectors.booksTable, { timeout: 2000 }).catch(() => {});
   }
 
   async getUserName() {

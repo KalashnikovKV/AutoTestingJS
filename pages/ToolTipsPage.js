@@ -46,7 +46,8 @@ class ToolTipsPage extends BasePage {
     for (const tooltip of tooltips) {
       try {
         await tooltip.waitFor({ state: 'hidden', timeout: 500 }).catch(() => {});
-      } catch {
+      } catch (error) {
+        // Ignore tooltip wait errors
       }
     }
   }
